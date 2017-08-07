@@ -30,3 +30,22 @@ git reset --hard commit_id //版本回退
 git log //查看回退到哪个版本
 git reflog //查看命令历史
 ```
+
+>管理修改
+
+```Bash
+git diff HEAD -- readme.txt 
+//查看工作区和版本库里面最新版本的区别
+```
+
+>撤销修改
+
+```Bash
+git checkout -- readme.txt 
+//把readme.txt在工作区的修改全部撤销
+git reset HEAD file 
+//将缓存区的修改撤销掉，重新放回工作区
+//git reset 命令既可以回退版本，也可以把暂存区的修改回退到工作区。
+//使用HEAD时表示最新版本
+
+```
