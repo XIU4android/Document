@@ -16,4 +16,17 @@ git commit -m "wrote a readme file"
 ```Bash
 git status //工作区的状态
 git diff //随时查看修改过的内容
+git log //查看提交历史纪录
+git log --pretty=oneline //记录单行处理
+
+cb926e7ea50ad11b8f9e909c05226233bf755030 wrote a readme file
+//commit id
+```
+
+>版本回退
+
+```Bash
+git reset --hard commit_id //版本回退
+git log //查看回退到哪个版本
+git reflog //查看命令历史
 ```
