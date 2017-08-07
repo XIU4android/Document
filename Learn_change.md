@@ -49,3 +49,11 @@ git reset HEAD file
 //使用HEAD时表示最新版本
 
 ```
+
+>删除文件
+
+```Bash
+git rm //git中删除，并且git commit
+git checkout -- test.txt
+//误删除恢复
+```
