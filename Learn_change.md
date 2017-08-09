@@ -164,3 +164,23 @@ git merge <name>
 //删除分支
 git branch -d <name>
 ```
+
+>解决冲突
+
+>>现在，master分支和feature1分支各自都分别有新的提交，变成了这样：
+
+![feature1](https://www.liaoxuefeng.com/files/attachments/001384909115478645b93e2b5ae4dc78da049a0d1704a41000/0)
+
+>>在这种情况下，Git无法执行快速合并，只能试图把各自修改合并起来，
+>>但这种合并就可能会有冲突
+
+```Bash
+git merge feature1
+git status
+//会告诉我们冲突的文件
+//Git 会标记处不同分支的内容 修改后保存
+git log --graph --pretty=oneline --abbrev-commit
+//带参数git log --graph 也可以看到分支的合并情况。
+git branch -d feature1
+//删除feature1分支
+```
