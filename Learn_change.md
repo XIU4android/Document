@@ -96,3 +96,71 @@ git clone git@github.com:michaelliao/gitskills.git
 >现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原
 >来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一
 >次性合并到原来的分支上，这样，既安全，又不影响别人工作
+
+>创建分支与合并
+
+>>在Git里，主分支即Master分支。HEAD严格来说不是指向提交，而是指向master,
+>>master才是指向提交的，所以，HEAD指向的就是当前分支。
+
+
+![Master](https://www.liaoxuefeng.com/files/attachments/0013849087937492135fbf4bbd24dfcbc18349a8a59d36d000/0)
+
+>>创建dev分支，然后切换到dev分支
+
+```Bash
+git checkout -b dev
+```
+
+>>git checkout 命令加上-b参数表示创建并切换，相当于以下两条命令：
+
+```Bash
+git branch
+```
+
+>>git branch 命令会列出所有分支，当前分支前面会标一个*号。
+
+>>在dev分支上正常提交
+
+```Bash
+git add readme.txt
+git commit -m "branch test"
+```
+
+>>现在，dev分支的工作完成，我们可以切换回master分支
+>>此刻master分支提交点并没有改变
+
+```Bash
+git checkout master
+```
+
+>>把dev分支的工作成果合并到master分支上：
+
+```Bash
+git merge dev
+```
+
+>>git merge命令用于合并指定分支到当前分支。
+
+>>合并完成后，就可以放心地删除dev分支了
+
+```Bash
+git branch -d dev
+git branch
+```
+
+>>删除后，查看branch,就只剩下master分支了。
+
+```Bash
+//查看分支
+git branch
+//创建分支
+git branch <name>
+//切换分支
+git checkout <name>
+//创建+切换分支
+git checkout -b <name>
+//合并某分支到当前分支
+git merge <name>
+//删除分支
+git branch -d <name>
+```

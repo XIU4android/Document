@@ -1023,4 +1023,99 @@ body .markdown-body
 git add readme.txt //把文件添加到仓库 
 git commit -m &quot;wrote a readme file&quot; 
 //告诉Git,把文件提交到仓库， -m 命令 提示修改内容
-</code></pre></article></body></html>
+</code></pre>
+
+<blockquote>
+<p>查看Git库状态</p>
+</blockquote>
+<pre><code class="Bash">git status //工作区的状态
+git diff //随时查看修改过的内容
+git log //查看提交历史纪录
+git log --pretty=oneline //记录单行处理
+
+cb926e7ea50ad11b8f9e909c05226233bf755030 wrote a readme file
+//commit id
+</code></pre>
+
+<blockquote>
+<p>版本回退</p>
+</blockquote>
+<pre><code class="Bash">git reset --hard commit_id //版本回退
+git log //查看回退到哪个版本
+git reflog //查看命令历史
+</code></pre>
+
+<blockquote>
+<p>管理修改</p>
+</blockquote>
+<pre><code class="Bash">git diff HEAD -- readme.txt 
+//查看工作区和版本库里面最新版本的区别
+</code></pre>
+
+<blockquote>
+<p>撤销修改</p>
+</blockquote>
+<pre><code class="Bash">git checkout -- readme.txt 
+//把readme.txt在工作区的修改全部撤销
+git reset HEAD file 
+//将缓存区的修改撤销掉，重新放回工作区
+//git reset 命令既可以回退版本，也可以把暂存区的修改回退到工作区。
+//使用HEAD时表示最新版本
+
+</code></pre>
+
+<blockquote>
+<p>删除文件</p>
+</blockquote>
+<pre><code class="Bash">git rm //git中删除，并且git commit
+git checkout -- test.txt
+//误删除恢复
+</code></pre>
+
+<blockquote>
+<p>远程仓库</p>
+<blockquote>
+<p>setting 中添加SSH KEY ，填写title ,复制pub文件中内容到对话框中。</p>
+</blockquote>
+</blockquote>
+<pre><code class="Bash">//在本地仓库运行
+git remote add origin git@github.com:michaelliao/learngit.git
+//michaelliao替换成自己的账户名
+git remote add origin &quot;ssh key ssh address&quot;
+git push -u origin master
+//git push 命令 实际上是把当前分支Master推送到远程。
+//-u 参数 不但会把本地的Master分支内容推送的远程新的master分支，
+//还会把本地的Master和远程的Master分支关联起来。简化以后推送或者拉取。
+//之后本地做了提交
+git push origin master 
+//就可以推送至github
+</code></pre>
+
+<blockquote>
+<p>从远程库克隆</p>
+<blockquote>
+<p>GitHub创建一个新仓库 gitskills<br />
+勾选Initialize this repository with a README</p>
+</blockquote>
+</blockquote>
+<pre><code class="Bash">git clone git@github.com:michaelliao/gitskills.git
+//git clone 命令克隆 
+//支持多种协议，包括https,ssh
+</code></pre>
+
+<h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>分支管理</h2>
+<blockquote>
+<p>分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周<br />
+你写了50%的代码，如果立刻提交，由于代码还没写完，<br />
+不完整的代码库会导致别人不能干<br />
+活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。<br />
+现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原<br />
+来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一<br />
+次性合并到原来的分支上，这样，既安全，又不影响别人工作</p>
+<p>创建分支与合并</p>
+<blockquote>
+<p>在Git里，主分支即Master分支。HEAD严格来说不是指向提交，而是指向master,<br />
+master才是指向提交的，所以，HEAD指向的就是当前分支。</p>
+</blockquote>
+</blockquote>
+<p><img alt="Master" src="https://www.liaoxuefeng.com/files/attachments/0013849087937492135fbf4bbd24dfcbc18349a8a59d36d000/0" /></p></article></body></html>
