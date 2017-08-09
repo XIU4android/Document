@@ -57,3 +57,42 @@ git rm //git中删除，并且git commit
 git checkout -- test.txt
 //误删除恢复
 ```
+
+>远程仓库
+
+>>setting 中添加SSH KEY ，填写title ,复制pub文件中内容到对话框中。
+
+```Bash
+//在本地仓库运行
+git remote add origin git@github.com:michaelliao/learngit.git
+//michaelliao替换成自己的账户名
+git remote add origin "ssh key ssh address"
+git push -u origin master
+//git push 命令 实际上是把当前分支Master推送到远程。
+//-u 参数 不但会把本地的Master分支内容推送的远程新的master分支，
+//还会把本地的Master和远程的Master分支关联起来。简化以后推送或者拉取。
+//之后本地做了提交
+git push origin master 
+//就可以推送至github
+```
+
+>从远程库克隆
+
+>>GitHub创建一个新仓库 gitskills
+>>勾选Initialize this repository with a README
+
+```Bash
+git clone git@github.com:michaelliao/gitskills.git
+//git clone 命令克隆 
+//支持多种协议，包括https,ssh
+```
+
+## 分支管理
+
+>分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周
+>你写了50%的代码，如果立刻提交，由于代码还没写完，
+>不完整的代码库会导致别人不能干
+>活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。
+>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原
+>来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一
+>次性合并到原来的分支上，这样，既安全，又不影响别人工作
