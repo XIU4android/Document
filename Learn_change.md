@@ -184,3 +184,73 @@ git log --graph --pretty=oneline --abbrev-commit
 git branch -d feature1
 //删除feature1分支
 ```
+
+>>分支管理策略
+
+>>通常合并分支时，如果可能，Git会用Fast forward模式，
+>>但这种模式下，删除分之后，会丢掉分支信息。
+
+>>如果强制禁用Fast Forward模式，Git就会在merge时生成一个新的commit.
+
+```Bash
+//首先创建并切换Dev分支
+git checkout -b dev 
+//修改readme.txt 并提交一个新的commit
+git add readme.txt
+git commit -m "add merge"
+//切换回master
+git checkout master
+//准备合并dev分支，--no-ff表示禁用Fast forward
+git merge --no-ff -m "merge with no-ff" dev
+//合并后，使用git log 查看分支历史
+git log --graph --pretty=oneline --abbrev-commit
+```
+
+>>分支策略
+>>实际开发中，应该按照几个基本原则进行分支管理
+
+>>1. master分支应该是非常稳定的，也就是仅用来发布新版本。
+>>2. 干活都在dev分支上，也就是说dev分支是不稳定的。到某个时候，比如1.0发布时，
+>>再把dev分支，合并到master上。
+>>3. 每个人都有自己的分支，时不时地往dev分支上合并就可以了。
+
+！[branch](https://www.liaoxuefeng.com/files/attachments/001384909239390d355eb07d9d64305b6322aaf4edac1e3000/0)
+
+>>BUG分支
+
+>>每个BUG都可以通过一个新的临时分支来修复，修复后，
+>>合并分支，然后将临时分支删除。但有时候工作只进行到一半，没法提交，
+>>但有BUG需要在两个小时内修复。
+>>Git提供stash功能，把工作现场“储藏”起来，等以后恢复现场后工作：
+
+```Bash
+git stash
+//之后用git status查看工作区，可以放心创建分支来修复BUG。
+//首先确定要在哪个分支上修复BUG，假如需要在master分支上修复，就从master创建分支
+git checkout master
+gti checkout -b issue-101
+//修复BUG
+git add readme.txt
+git commit -m "fix bug 101"
+//修复完成后，切换到master分支，并完成合并。删除issue-101分支：
+git checkout master
+git merge --no-ff -m "recursive" strategy.
+git branch -d issue-101
+//完成修复，回dev分支干活
+git checkout dev
+git status
+git stash list
+//工作现场还在，但需要恢复一下
+git stash apply
+git stash drop 
+//使用apply 恢复后需要 drop 删除恢复区内内容
+git stash pop
+//恢复的同时把stash内容也删除
+git stash list
+//使用 list 查看就看不到任何内容了。
+//可以多次stash 恢复的时候先用 git stash list 查看。
+//然后恢复指定的stash
+git stash apply stash@{0}
+```
+
+>>>Feature分支
