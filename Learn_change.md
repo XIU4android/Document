@@ -216,7 +216,7 @@ git log --graph --pretty=oneline --abbrev-commit
 >>再把dev分支，合并到master上。
 >>3. 每个人都有自己的分支，时不时地往dev分支上合并就可以了。
 
-！[branch](https://www.liaoxuefeng.com/files/attachments/001384909239390d355eb07d9d64305b6322aaf4edac1e3000/0)
+![branch](https://www.liaoxuefeng.com/files/attachments/001384909239390d355eb07d9d64305b6322aaf4edac1e3000/0)
 
 >>BUG分支
 
