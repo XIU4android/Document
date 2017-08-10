@@ -63,6 +63,8 @@ git checkout -- test.txt
 >>setting 中添加SSH KEY ，填写title ,复制pub文件中内容到对话框中。
 
 ```Bash
+//产生sshkey
+ssh-keygen -t rsa -C “xxxxxx@gmail.com”
 //在本地仓库运行
 git remote add origin git@github.com:michaelliao/learngit.git
 //michaelliao替换成自己的账户名
@@ -253,4 +255,108 @@ git stash list
 git stash apply stash@{0}
 ```
 
->>>Feature分支
+>Feature分支
+
+>>每添加一个新功能，最好新建一个个feature分支，开发完成合并删除。
+
+```Bash
+git checkout -b feature-vulcan
+git add vulcan.py
+git status
+git commit -m "add feature vulcan"
+//切回DEV
+git checkout dev
+//新功能取消，分支就地销毁
+git branch -D feature-vulcan
+//强制删除 -D 丢弃一个没有被合并过的分支
+```
+
+>多人协作
+
+>>当从远程仓库克隆时，实际上Git自动把本地的Master分支和
+>>远程的Master分支对应起来了,并且远程仓库的默认名称是origin.
+
+```Bash
+//查看远程库的信息
+git remote
+//-v 参数显示更详细的信息
+git remote -v
+//如果没有推送权限，就看不到push的地址。
+```
+
+>推送分支
+
+>>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要制定本地分支
+>>Git就会把该分支推送到远程库对应的远程分支上：
+
+```Bash
+git push orgin master
+//推送其他分支，比如dev
+git push origin dev
+```
+
+>> master 分支是主分支，因此要时刻与远程同步；
+>> dev 分支是分开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；
+>> bug分支只用于在本地修复Bug,就没有必要推到远程了，除非老板要看每周修复几个
+>> feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。
+
+>抓取分支
+
+```Bash
+git clone git@github.com:jmichaelliao/learngit.git
+```
+
+>从远程库clone时，默认情况下，只能看到本地的master分支。
+
+```Bash
+git branch
+//只能看到本地的master
+```
+
+>需要在dev分支上开发，就必须创建远程origin的dev分支到本地，
+
+```Bash
+git checkout -b dev origin/dev
+```
+
+>现在他可以在dev上继续修改，然后，时不时把dev分支push到远程
+
+```Bash
+git commit -m "add /usr/bin/env"
+git push origin dev
+```
+
+>你的小伙伴已经向origin/dev分支推送了他的提交，而碰巧你也对同样的文件作了修改
+>并试图推送
+
+```Bash
+git add hello.py
+git commit -m "add coding:utf-8"
+git push orgin dev
+```
+
+>推送失败，因为你的小伙伴的最新提交和你的试图推送的提交有冲突，
+>解决办法先用git pull把最新的提交从orgin/dev抓取下来，
+>然后在本地合并，解决冲突再推送
+
+```Bash
+git pull
+```
+
+>git pull也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，
+>根据提示，设置dev和origin/dev的链接。
+
+```Bash
+git branch --set-upstream dev origin/dev
+git pull
+```
+
+>因此，多人写作的工作模式时通常
+>1. 首先，可以试图用git push origin branch-name 推送自己的修改
+>2. 如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并
+>3. 如果合并有冲突，则解决冲突，并在本地提交；
+>4. 没有冲突，或者解决掉冲突后,再用git push origin branch-name 推送就能成功！
+>如果git pull提示“no tracking information”,则说明本地分支和远程分支的链接关系
+>没有创建，用命令 git branch --set-upstream branch-name origin/branch-name
+
+
