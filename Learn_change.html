@@ -1015,236 +1015,2546 @@ body .markdown-body
   }
 }
 </style><title>Learn_change</title></head><body><article class="markdown-body"><h1 id="git"><strong><em>Git</em></strong> 使用教程</h1>
-<h2 id="git_1"><strong><em>Git</em></strong> 命令</h2>
+<table>
+<thead>
+<tr>
+<th align="center">No.</th>
+<th align="center">Contect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="#jump_1">1</a></td>
+<td align="center">Git使用环境搭建与优化</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_2">2</a></td>
+<td align="center">Git本地基本操作命令</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_3">3</a></td>
+<td align="center">Git远程库连接</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_4">4</a></td>
+<td align="center">Git协同代码操作</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_5">5</a></td>
+<td align="center">GitHub、码云、Gitlib使用</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_6">6</a></td>
+<td align="center">自定义Git</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><span id="jump_1"></span></p>
+<h2 id="git_1"><strong><em>Git</em></strong> 使用环境搭建与优化</h2>
+<h3 id="linux-git"><strong><em>Linux</em></strong> 上安装 <strong><em>Git</em></strong></h3>
+<ol>
+<li>
+<p>首先，尝试输入 <strong><em>git</em></strong> ,看系统有没有安装 <strong><em>Git</em></strong></p>
+</li>
+<li>
+<p>Ubuntu ：sudo apt-get install git</p>
+</li>
+<li>
+<p>CentOS ：最新版本 <strong><em>Git</em></strong> 需要进行编译安装</p>
+<ol>
+<li>
+<p>安装依赖环境 </p>
+<ul>
+<li>
+<p>安装 <strong><em>openssl</em></strong></p>
+<pre><code class="bash">wget http://www.openssl.org/src/5.0/perl-5.22.1.tar.gz
+mkdir -p /usr/local/webserver/openssl
+tar -zxvf openssl-1.0.2.tar.gz
+cd openssl-1.0.2
+./configure --prefix=/usr/lcoal/webserver/openssl
+make &amp;&amp; make install
+</code></pre>
+
+</li>
+<li>
+<p>安装 <strong><em>perl</em></strong></p>
+<pre><code class="bash">wget http://www.cpan.org/src/5.0/perl-5.22.1.tar.gz
+mkdir -p /usr/local/webserver/perl
+tar -zxvf perl-5.22.1.tar.gz
+cd perl-5.22.1
+./configure --perfix=/usr/local/webserver/perl
+make &amp;&amp; make install
+</code></pre>
+
+</li>
+<li>
+<p>安装 <strong><em>zlib</em></strong></p>
+<pre><code class="bash">wget http://nchc.dl.sourceforge.net/project/libpng/zlib/1.2.8/zlib
+mkdir -p /usr/lcoal/webserver/zlib
+zlib-1.2.8.tar.gz
+tar -xzvf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+./configure --prefix=/usr/local/webserver/zlib
+make &amp;&amp; make install
+</code></pre>
+
+</li>
+<li>
+<p>安装 <strong><em>xmlto</em></strong></p>
+<pre><code class="bash">wget https://fedorahosted.org/releases/x/m/xmlto/xmlto-0.0.28.tar.gz
+mkdir -p /usr/local/webserver/xmlto
+tar -xzvf xmlto-0.0.28.tar.gz
+cd xmlto-0.0.28
+./configure --prefix=/usr/local/webserver/xmlto
+make &amp;&amp; make install
+</code></pre>
+
+</li>
+<li>
+<p>安装 <strong><em>asciidoc</em></strong></p>
+<pre><code class="bash">wget http://sourceforge.net/directory/?q=asciidoc-8.6.9.tar.gz
+mkdir -p /usr/local/webserver/asciidoc
+tar -xzvf asciidoc-8.6.9.tar.gz
+cd asciidoc-8.6.9
+./configure --prefix=/usr/local/webserver/asciidoc
+make &amp;&amp; make install
+</code></pre>
+
+</li>
+</ul>
+</li>
+<li>
+<p>安装 <strong><em>Git</em></strong></p>
+<pre><code class="bash">wget https://www.kernel.org/pub/software/scm/git/git-2.7.0.tar.gz
+mkdir -p /usr/local/webserver/git
+tar -xzvf git-2.7.0.tar.gz 
+cd git-2.7.0
+make configure
+./configure --prefix=/usr/local/webserver/git
+make all doc
+make install install-doc install-man install-html
+</code></pre>
+
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="mac-os-git"><strong><em>Mac OS</em></strong> 上安装 <strong><em>Git</em></strong></h3>
+<ol>
+<li>
+<p>安装homebrew，然后通过homebrew安装Git，具体方法请参考homebrew的文档：<a href="http://brew.sh/"><a href="http://brew.sh/"><a href="http://brew.sh/">http://brew.sh/</a></a></a>。</p>
+</li>
+<li>
+<p>就是直接从AppStore安装Xcode，Xcode集成了Git，不过默认没有安装，你需要运行Xcode，选择菜单“Xcode”-&gt;“Preferences”，在弹出窗口中找到“Downloads”，选择“Command Line Tools”，点“Install”就可以完成安装了。</p>
+</li>
+</ol>
+<h3 id="windows-git"><strong><em>Windows</em></strong> 上安装 <strong><em>Git</em></strong></h3>
+<ol>
+<li>
+<p><a href="https://git-for-windows.github.io">msysgit</a> 是Windows版的git 从 <a href="https://git-for-windows.github.io"><a href="https://git-for-windows.github.io"><a href="https://git-for-windows.github.io">https://git-for-windows.github.io</a></a></a>下载。</p>
+</li>
+<li>
+<p>安装完成后，在开始菜单找到Git-&gt;Git bash,并在命令行里输入</p>
+<pre><code class="bash">git config --global user.name &quot;Your Name&quot;
+git config --global user.email &quot;email@example.com&quot;
+</code></pre>
+
+</li>
+</ol>
+<p><span id="jump_2"></span></p>
+<h2 id="git_2"><strong><em>Git</em></strong> 本地基本操作命令</h2>
+<h3 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>创建版本库</h3>
 <blockquote>
-<p>创建版本库</p>
+<p>版本库又名仓库，英文repository,可以简单理解成一个目录。在这个目录里边的<br />
+所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻<br />
+都可以追踪历史，或者在将来某个时刻可以还原。</p>
 </blockquote>
-<pre><code class="Bash">git init //创建版本库
-git add readme.txt //把文件添加到仓库 
-git commit -m &quot;wrote a readme file&quot; 
-//告诉Git,把文件提交到仓库， -m 命令 提示修改内容
+<ol>
+<li>
+<p>创建空目录</p>
+<pre><code class="bash">mkdir learngit
+cd learngit
+pwd
+</code></pre>
+
+<p>pwd 显示该仓库位于/Users/michael/learngit</p>
+<ul>
+<li><strong> 如果使用Windows系统，为避免遇到奇怪的问题，请确保目录名（包括父目录）不包含中文。</strong></li>
+</ul>
+</li>
+<li>
+<p>初始化仓库</p>
+<pre><code class="bash">git init
+</code></pre>
+
+</li>
+</ol>
+<h3 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>把文件添加到版本库</h3>
+<ol>
+<li>
+<p>用命令 <strong><em>git add</em></strong> 告诉 <strong><em>Git</em></strong> ，把文件添加到仓库：</p>
+<pre><code class="bash">git add readme.txt
+</code></pre>
+
+</li>
+<li>
+<p>用命令 <strong><em>git commit</em></strong> 告诉 <strong><em>Git</em></strong> , 把文件提交到仓库：</p>
+<pre><code class="bash">git commit -m &quot;[wrote a readme file]&quot;
 </code></pre>
 
 <blockquote>
-<p>查看Git库状态</p>
+<p>git commit 参数 -m 后面输入的是本次提交的说明，可以输入任意内容，<br />
+当然最好是有意义的，这样就能从历史记录里方便地找到改动记录。</p>
 </blockquote>
-<pre><code class="Bash">git status //工作区的状态
-git diff //随时查看修改过的内容
-git log //查看提交历史纪录
-git log --pretty=oneline //记录单行处理
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>commit 可以一次提交很多文件，所以可以多次add不同的文件。</strong></p>
+<pre><code class="bash">git add file1.txt
+git add file2.txt file3.txt
+git commit -m &quot;[add 3 files]&quot;
+</code></pre>
 
-cb926e7ea50ad11b8f9e909c05226233bf755030 wrote a readme file
-//commit id
+</li>
+</ul>
+<h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>查看库状态</h3>
+<ol>
+<li>
+<p>继续修改readme.txt文件后，使用 <strong><em>git status</em></strong> 查看结果</p>
+<pre><code class="bash">git status
 </code></pre>
 
 <blockquote>
-<p>版本回退</p>
+<p>On branch master<br />
+ Changes not staged for commit:<br />
+   (use &ldquo;git add <file>&hellip;&rdquo; to update what will be committed)<br />
+   (use &ldquo;git checkout &ndash; <file>&hellip;&rdquo; to discard changes in working directory)</p>
+<p>modified:   readme.txt</p>
+<p>no changes added to commit (use &ldquo;git add&rdquo; and/or &ldquo;git commit -a&rdquo;)</p>
 </blockquote>
-<pre><code class="Bash">git reset --hard commit_id //版本回退
-git log //查看回退到哪个版本
-git reflog //查看命令历史
+<ul>
+<li>git status 命令可以让我们时刻掌握仓库当前的状态。</li>
+</ul>
+</li>
+<li>
+<p>使用 <strong><em>git diff</em></strong> 命令查看具体修改了什么内容。</p>
+<pre><code class="bash">git diff readme.txt
 </code></pre>
 
 <blockquote>
-<p>管理修改</p>
+<p>diff &ndash;git a/readme.txt b/readme.txt<br />
+index 46d49bf..9247db6 100644<br />
+&mdash; a/readme.txt<br />
++++ b/readme.txt<br />
+@@ -1,2 +1,2 @@<br />
+-Git is a version control system.<br />
++Git is a distributed version control system.<br />
+ Git is free software.</p>
 </blockquote>
-<pre><code class="Bash">git diff HEAD -- readme.txt 
-//查看工作区和版本库里面最新版本的区别
+<ul>
+<li>git diff 就是查看difference，显示的格式是Unix通用的diff格式。</li>
+</ul>
+</li>
+<li>
+<p>执行git add后，在执行git commit之前，再运行git status产看当前仓库的状态。</p>
+<pre><code class="bash">git add readme.txt
+git status
 </code></pre>
 
 <blockquote>
-<p>撤销修改</p>
+<p>On branch master<br />
+Changes to be committed:<br />
+  (use &ldquo;git reset HEAD <file>&hellip;&rdquo; to unstage)</p>
+<p>modified:   readme.txt<br />
+</p>
 </blockquote>
-<pre><code class="Bash">git checkout -- readme.txt 
-//把readme.txt在工作区的修改全部撤销
-git reset HEAD file 
-//将缓存区的修改撤销掉，重新放回工作区
-//git reset 命令既可以回退版本，也可以把暂存区的修改回退到工作区。
-//使用HEAD时表示最新版本
-
+<ul>
+<li>git status告诉我们，将要被提交的修改包括readme.txt。</li>
+</ul>
+</li>
+<li>
+<p>可以放心的提交了</p>
+<pre><code class="bash">git commit -m &quot;[add xxxx]&quot;
 </code></pre>
 
 <blockquote>
-<p>删除文件</p>
+<p>[master ea34578] add distributed<br />
+1 file changed, 1 insertion(+), 1 deletion(-)</p>
 </blockquote>
-<pre><code class="Bash">git rm //git中删除，并且git commit
-git checkout -- test.txt
-//误删除恢复
+</li>
+<li>
+<p>提交后再用git status命令产看仓库当前状态</p>
+<pre><code class="bash">git status
 </code></pre>
 
 <blockquote>
-<p>远程仓库</p>
-<blockquote>
-<p>setting 中添加SSH KEY ，填写title ,复制pub文件中内容到对话框中。</p>
+<p>On branch master<br />
+nothing to commit (working directory clean)</p>
 </blockquote>
-</blockquote>
-<pre><code class="Bash">//在本地仓库运行
-git remote add origin git@github.com:michaelliao/learngit.git
-//michaelliao替换成自己的账户名
-git remote add origin &quot;ssh key ssh address&quot;
-git push -u origin master
-//git push 命令 实际上是把当前分支Master推送到远程。
-//-u 参数 不但会把本地的Master分支内容推送的远程新的master分支，
-//还会把本地的Master和远程的Master分支关联起来。简化以后推送或者拉取。
-//之后本地做了提交
-git push origin master 
-//就可以推送至github
+<ul>
+<li>Git告诉我们当前没有需要提交的修改，而且，工作目录是干净的（working directory clean）</li>
+</ul>
+</li>
+</ol>
+<h3 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>版本回退</h3>
+<ol>
+<li>
+<p>每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为Commit。</p>
+</li>
+<li>
+<p>一旦把文件改乱了，或者误删了文件，还可以从最近的一个Commit中恢复，然后继续工作。</p>
+</li>
+<li>
+<p>在Git可以用 git log 命令查看：</p>
+<pre><code class="bash">git log
 </code></pre>
 
 <blockquote>
-<p>从远程库克隆</p>
-<blockquote>
-<p>GitHub创建一个新仓库 gitskills<br />
-勾选Initialize this repository with a README</p>
+<p>commit 3628164fb26d48395383f8f31179f24e0882e1e0<br />
+Author: Michael Liao <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#115;&#107;&#120;&#117;&#101;&#102;&#101;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#97;&#115;&#107;&#120;&#117;&#101;&#102;&#101;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br />
+Date:   Tue Aug 20 15:11:49 2013 +0800</p>
+<p>append GPL</p>
+<p>commit ea34578d5496d7dd233c827ed32a8cd576c5ee85<br />
+Author: Michael Liao <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#115;&#107;&#120;&#117;&#101;&#102;&#101;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#97;&#115;&#107;&#120;&#117;&#101;&#102;&#101;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br />
+Date:   Tue Aug 20 14:53:12 2013 +0800</p>
+<p>add distributed</p>
+<p>commit cb926e7ea50ad11b8f9e909c05226233bf755030<br />
+Author: Michael Liao <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#115;&#107;&#120;&#117;&#101;&#102;&#101;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#97;&#115;&#107;&#120;&#117;&#101;&#102;&#101;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br />
+Date:   Mon Aug 19 17:51:55 2013 +0800</p>
+<p>wrote a readme file<br />
+</p>
 </blockquote>
-</blockquote>
-<pre><code class="Bash">git clone git@github.com:michaelliao/gitskills.git
-//git clone 命令克隆 
-//支持多种协议，包括https,ssh
+<p>如果嫌输出信息太多，可以尝试添加参数&ndash;pretty=oneline</p>
+<pre><code class="bash">git log --pretty=oneline
 </code></pre>
 
-<h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>分支管理</h2>
 <blockquote>
-<p>分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周<br />
-你写了50%的代码，如果立刻提交，由于代码还没写完，<br />
-不完整的代码库会导致别人不能干<br />
-活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。<br />
-现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原<br />
-来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一<br />
-次性合并到原来的分支上，这样，既安全，又不影响别人工作</p>
-<p>创建分支与合并</p>
-<blockquote>
-<p>在Git里，主分支即Master分支。HEAD严格来说不是指向提交，而是指向master,<br />
-master才是指向提交的，所以，HEAD指向的就是当前分支。</p>
+<p>3628164fb26d48395383f8f31179f24e0882e1e0 append GPL<br />
+ea34578d5496d7dd233c827ed32a8cd576c5ee85 add distributed<br />
+cb926e7ea50ad11b8f9e909c05226233bf755030 wrote a readme file</p>
 </blockquote>
+<p>一大串类似 3628&hellip;882e1e0 的是 commit id（版本号），和SVN不一样，Gitde的commit id 不是1，2，3&hellip;递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示。因为Git是分布式的版本控制系统，如果多人在同一个版本库里工作，如果大家都用1，2，3&hellip;作为版本号，那肯定就冲突了。</p>
+<ul>
+<li>
+<p>每提交一个新版本，Git就会把他们自动串成一条时间线。如果使用可视化工具查看，就可以清楚地查看到体骄傲历史的时间线。</p>
+<p><img alt="time_line" src="https://www.liaoxuefeng.com/files/attachments/001384907545599be4a60a0b5044447b47c8d8b805a25d2000/0" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>如果我们要把 readme.txt 回退到上一个版本，也就是“add distributed”</p>
+<blockquote>
+<p>首先，Git 必须知道当前版本是哪个版本，在Git中，用 HEAD 表示当前版本，<br />
+也就是最新的提交 3628&hellip;e1e0 ，上一个版本就是 HEAD^ ，<br />
+上上个版本就是 HEAD^^，当然往上100个版本，不容易表示，就可以使用HEAD~100</p>
 </blockquote>
-<p><img alt="Master" src="https://www.liaoxuefeng.com/files/attachments/0013849087937492135fbf4bbd24dfcbc18349a8a59d36d000/0" /></p>
+</li>
+<li>
+<p>现在，我们要把版本“append GPL”回退到上一个版本 “add distributed”,就可以使用git reset 命令。</p>
+<pre><code class="bash">git reset --hard HEAD^
+</code></pre>
+
 <blockquote>
+<p>HEAD is now at ea34578 add distributed</p>
+</blockquote>
+</li>
+<li>
+<p>还可以继续回退到上一个版本 wrote a readme file, 我们用git log再看看现在版本库状态</p>
+<pre><code class="bash">git log
+</code></pre>
+
 <blockquote>
+<p>commit ea34578d5496d7dd233c827ed32a8cd576c5ee85<br />
+Author: Michael Liao <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#115;&#107;&#120;&#117;&#101;&#102;&#101;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#97;&#115;&#107;&#120;&#117;&#101;&#102;&#101;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br />
+Date:   Tue Aug 20 14:53:12 2013 +0800</p>
+<p>add distributed</p>
+<p>commit cb926e7ea50ad11b8f9e909c05226233bf755030<br />
+Author: Michael Liao <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#115;&#107;&#120;&#117;&#101;&#102;&#101;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#97;&#115;&#107;&#120;&#117;&#101;&#102;&#101;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br />
+Date:   Mon Aug 19 17:51:55 2013 +0800</p>
+<p>wrote a readme file</p>
+</blockquote>
+<ul>
+<li>最新的版本 append GPL 已经看不到了，如何回到 append GPL?</li>
+<li>找到 append GPL 的 commit id 是 3628164 </li>
+</ul>
+</li>
+<li>
+<p>使用 git reset 命令去到未来版本。</p>
+<pre><code class="bash">git reset --hard 3628164
+</code></pre>
+
+<blockquote>
+<p>HEAD is now at 3628164 append GPL</p>
+</blockquote>
+<ul>
+<li>版本号没有必要写全，Git会自动查找匹配。</li>
+</ul>
+</li>
+<li>
+<p>但如果找不到 commit id ，还想要恢复到新版本，可以使用 git reflog 命令查找。</p>
+<blockquote>
+<p>Git 提供了一个命令 git reflog 用来记录每一次命令</p>
+</blockquote>
+<pre><code class="bash">git reflog
+</code></pre>
+
+<blockquote>
+<p>ea34578 HEAD@{0}: reset: moving to HEAD^<br />
+<strong>3628164 HEAD@{1}: commit: append GPL</strong><br />
+ea34578 HEAD@{2}: commit: add distributed<br />
+cb926e7 HEAD@{3}: commit (initial): wrote a readme file</p>
+</blockquote>
+<ul>
+<li>第二行显示 append GPL 的 commit id 是 3628164</li>
+</ul>
+</li>
+<li>
+<p>Git的版本回退速度非常快。</p>
+<ul>
+<li>
+<p>因为Git在内部有个指向当前版本的HEAD指针，当回退版本的时候，Git仅仅是把HEAD从指向 append GPL ：</p>
+<p><img alt="append_GPL" src="https://www.liaoxuefeng.com/files/attachments/001384907584977fc9d4b96c99f4b5f8e448fbd8589d0b2000/0" /></p>
+</li>
+<li>
+<p>改为指向 add distributed :</p>
+<p><img alt="distributed" src="https://www.liaoxuefeng.com/files/attachments/001384907594057a873c79f14184b45a1a66b1509f90b7a000/0" /></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>工作区和暂存区</h3>
+<ul>
+<li>
+<p>工作区（Working Directory）</p>
+<p>就是在电脑里能看到的目录，比如 learngit 文件夹就是一个工作区。</p>
+</li>
+<li>
+<p>版本库 (Repository)</p>
+<p>工作区有一个隐藏目录 .git ，这个不算工作区，而是Git的版本库。</p>
+</li>
+</ul>
+<p>Git的版本库最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</p>
+<p><img alt="Stage" src="https://www.liaoxuefeng.com/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0" /></p>
+<p>把文件往Git版本库里添加的时候，实际上分两步执行的：</p>
+<ol>
+<li>
+<p>用 git add 把文件添加进去，实际上就是把文件修改添加到暂存区;</p>
+</li>
+<li>
+<p>用 git commit 提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
+</li>
+</ol>
+<p>使用git diff HEAD &ndash; readme.txt 命令可以查看工作区和版本库最新版本的区别：</p>
+<pre><code class="bash">git diff HEAD -- readme.txt
+</code></pre>
+
+<blockquote>
+<p>diff &ndash;git a/readme.txt b/readme.txt<br />
+index 76d770f..a9c5755 100644<br />
+&mdash; a/readme.txt<br />
++++ b/readme.txt<br />
+@@ -1,4 +1,4 @@<br />
+ Git is a distributed version control system.<br />
+ Git is free software distributed under the GPL.<br />
+ Git has a mutable index called stage.<br />
+-Git tracks changes.<br />
++Git tracks changes of files.</p>
+</blockquote>
+<h3 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>撤销修改</h3>
+<ol>
+<li>
+<p>只是在工作区内做了修改，或者删除文件，新建文件，没有add到暂存区。</p>
+<p>手动把文件恢复到上一个版本状态，如果用 git status 查看一下 ：</p>
+<pre><code class="bash">git status
+</code></pre>
+
+<blockquote>
+<p>On branch master<br />
+Changes not staged for commit:<br />
+  (use &ldquo;git add <file>&hellip;&rdquo; to update what will be committed)<br />
+  (use &ldquo;git checkout &ndash; <file>&hellip;&rdquo; to discard changes in working directory)</p>
+<p>modified:   readme.txt<br />
+</p>
+</blockquote>
+<p>git 会告诉你，git checkout &ndash; file 可以丢弃工作区的修改:</p>
+<pre><code class="bash">git checkout -- readme.txt
+</code></pre>
+
+<p>意思是把 readme.txt 文件在工作区的修改全部撤销。这里有两种情况：</p>
+<ol>
+<li>
+<p>readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
+</li>
+<li>
+<p>readme.txt已经添加到暂存区后，又做了修改，现在撤销修改就回到添加暂存区后的状态。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>不仅做了修改，还 git add 到暂存区了,还未commit :</p>
+<pre><code class="bash">git status 
+</code></pre>
+
+<blockquote>
+<p>On branch master<br />
+Changes to be committed:<br />
+(use &ldquo;git reset HEAD <file>&hellip;&rdquo; to unstage)</p>
+<p>modified:   readme.txt<br />
+no changes added to commit (use &ldquo;git add&rdquo; and/or &ldquo;git commit -a&rdquo;)</p>
+</blockquote>
+<p>使用git reset HEAD file 可以把暂存区的修改撤销掉（unstage）,重新放回工作区：</p>
+<pre><code class="bash">git reset HEAD readme.txt
+</code></pre>
+
+<ul>
+<li>git reset 命令既可以回退版本，也可以把暂存区的修改回退到工作区。当时用HEAD时，表示最新的版本。</li>
+</ul>
+<ol>
+<li>
+<p>再用git status查看一下，现在暂存区是干净的，工作区有修改：</p>
+</li>
+<li>
+<p>git checkout &ndash; readme.txt，丢弃工作区的修改</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>删除文件</h3>
+<ol>
+<li>
+<p>一般情况下，通常直接在文件管理器中把没用的文件删了，git会提醒工作区和版本库不一致。git status命令会提示哪些文件被删除了。</p>
+</li>
+<li>
+<p>确实要从版本库中删除文件，使用 git rm 删掉，并且 git commit：</p>
+<pre><code class="bash">git rm test.txt
+git commit -m &quot;remove test.txt&quot;
+</code></pre>
+
+<p>另一种情况是删错了，可以从版本库把误删文件恢复到最新版本：</p>
+<pre><code class="bash">git checkout -- test.txt
+</code></pre>
+
+</li>
+</ol>
+<p><span id="jump_3"></span></p>
+<h2 id="git_3"><strong><em>Git</em></strong> 远程库连接</h2>
+<h3 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>远程仓库</h3>
+<ol>
+<li>
+<p>创建SSH Key。</p>
+<blockquote>
+<p>在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和<br />
+id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，<br />
+打开Shell（Windows下打开Git bash），创建SSH Key：</p>
+</blockquote>
+<pre><code class="bash">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
+</code></pre>
+
+<p>如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。</p>
+</li>
+<li>
+<p>登陆GitHub，打开&rdquo;Account settings&rdquo;,&rdquo;SSH Keys&rdquo;页面：</p>
+<p>然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容：</p>
+<p><img alt="Add SSH Key" src="https://www.liaoxuefeng.com/files/attachments/001384908342205cc1234dfe1b541ff88b90b44b30360da000/0" /></p>
+</li>
+</ol>
+<h3 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>添加远程仓库</h3>
+<p>(以GitHub为例)</p>
+<ol>
+<li>
+<p>登陆GitHub，右上角找到 &ldquo;Create a new repo&rdquo;,创建一个新的仓库：</p>
+<p><img alt="Create a new repo" src="https://www.liaoxuefeng.com/files/attachments/0013849084639042e9b7d8d927140dba47c13e76fe5f0d6000/0" /></p>
+<p>在Repository name填入learngit，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库：</p>
+<p><img alt="Repository name" src="https://www.liaoxuefeng.com/files/attachments/0013849084720379a3eae576b9f417da2add578c8612a2e000/0" /></p>
+</li>
+<li>
+<p>目前，在GitHub上的这个learngit仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。</p>
+<pre><code class="bash">git remote add origin &lt;git@github.com:michaelliao/learngit.git&gt;
+git remote add origin git@server-name:path/repo-name.git；
+</code></pre>
+
+<blockquote>
+<p>&lt; &gt;内内容为自己的Git库账户名，及远程库连接。</p>
+</blockquote>
+</li>
+<li>
+<p>下一步，就可以把本地库的所有内容推送到远程库上：</p>
+<pre><code class="bash">git push -u origin master
+</code></pre>
+
+<blockquote>
+<p>Counting objects: 19, done.<br />
+Delta compression using up to 4 threads.<br />
+Compressing objects: 100% (19/19), done.<br />
+Writing objects: 100% (19/19), 13.73 KiB, done.<br />
+Total 23 (delta 6), reused 0 (delta 0)<br />
+To <a href="mailto:git@github.com">git@github.com</a>:michaelliao/learngit.git<br />
+ * [new branch]      master -&gt; master<br />
+Branch master set up to track remote branch master from origin.</p>
+</blockquote>
+<p>把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。</p>
+<p>由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</p>
+</li>
+<li>
+<p>从现在起，只要本地作了提交，就可以通过命令：</p>
+<pre><code class="bash">git push origin master
+</code></pre>
+
+<p>把本地master分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！</p>
+</li>
+<li>
+<p>SSH警告</p>
+</li>
+</ol>
+<p>当你第一次使用Git的clone或者push命令连接GitHub时，会得到一个警告：</p>
+<blockquote>
+<p>The authenticity of host &lsquo;github.com (xx.xx.xx.xx)&rsquo; can&rsquo;t be established.<br />
+RSA key fingerprint is xx.xx.xx.xx.xx.<br />
+Are you sure you want to continue connecting (yes/no)?</p>
+</blockquote>
+<p>这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入yes回车即可。</p>
+<p>Git会输出一个警告，告诉你已经把GitHub的Key添加到本机的一个信任列表里了：</p>
+<blockquote>
+<p>Warning: Permanently added &lsquo;github.com&rsquo; (RSA) to the list of known hosts.</p>
+</blockquote>
+<h3 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>从远程仓库克隆</h3>
+<ol>
+<li>
+<p>创建远程库，从远程库克隆。在GitHub，创建新仓库 gitskills :</p>
+</li>
+<li>
+<p>我们勾选Initialize this repository with a README，这样GitHub会自动为我们创建一个README.md文件。创建完毕后，可以看到README.md文件：</p>
+</li>
+<li>
+<p>现在，远程库已经准备好了，下一步是用命令git clone克隆一个本地库：</p>
+</li>
+</ol>
+<pre><code class="bash">git clone git@github.com:michaelliao/gitskills.git
+</code></pre>
+
+<blockquote>
+<p>Cloning into &lsquo;gitskills&rsquo;&hellip;<br />
+remote: Counting objects: 3, done.<br />
+remote: Total 3 (delta 0), reused 0 (delta 0)<br />
+Receiving objects: 100% (3/3), done.</p>
+</blockquote>
+<p>你也许还注意到，GitHub给出的地址不止一个，还可以用https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</p>
+<p>使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https。</p>
+<p><span id="jump_4"></span></p>
+<h2 id="git_4"><strong><em>Git</em></strong> 协同代码操作</h2>
+<p>分支在实际中有什么用呢？假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
+<p>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。</p>
+<h3 id="_11"><a name="user-content-_11" href="#_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>创建与合并分支</h3>
+<blockquote>
+<p>你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。<br />
+截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。<br />
+HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，<br />
+所以，HEAD指向的就是当前分支。</p>
+</blockquote>
+<ol>
+<li>
+<p>当创建新的分支，例如dev时，Git新建了一个指针叫dev,指向master相同的提交。再把HEAD指向dev，就表示当前分支在dev上：</p>
+<p><img alt="create dev" src="https://www.liaoxuefeng.com/files/attachments/001384908811773187a597e2d844eefb11f5cf5d56135ca000/0" /></p>
+<p>Git创建一个分支很快，因为除了增加一个dev指针，改改HEAD的指向，工作区的文件都没有任何变化。</p>
+</li>
+<li>
+<p>对工作区的修改和提交就是针对dev分支了，新的提交dev指针向前一步，而master指针不变：</p>
+<p><img alt="commit dev" src="https://www.liaoxuefeng.com/files/attachments/0013849088235627813efe7649b4f008900e5365bb72323000/0" /></p>
+</li>
+<li>
+<p>假如我们在dev上的工作完成了，就可以把dev合并到master上。直接把master指向dev的当前提交，就完成了合并:</p>
+<p><img alt="dev master" src="https://www.liaoxuefeng.com/files/attachments/00138490883510324231a837e5d4aee844d3e4692ba50f5000/0" /></p>
+</li>
+<li>
+<p>合并完分支后，甚至可以删除dev分支，删除dev分支就是把dev指针给删掉。</p>
+<p><img alt="del dev" src="https://www.liaoxuefeng.com/files/attachments/001384908867187c83ca970bf0f46efa19badad99c40235000/0" /></p>
+</li>
+</ol>
+<p>实际操作：</p>
+<ol>
+<li>
 <p>创建dev分支，然后切换到dev分支</p>
-</blockquote>
-</blockquote>
-<pre><code class="Bash">git checkout -b dev
+<pre><code class="bash">git checkout -b dev
 </code></pre>
 
 <blockquote>
-<blockquote>
-<p>git checkout 命令加上-b参数表示创建并切换，相当于以下两条命令：</p>
+<p>switched to a new branch &lsquo;dev&rsquo;</p>
 </blockquote>
-</blockquote>
-<pre><code class="Bash">git branch
+</li>
+<li>
+<p>git checkout 命令加上-b参数表示创建并切换，相当于两条命令：</p>
+<pre><code class="bash">git branch dev
+git checkout dev
 </code></pre>
 
 <blockquote>
+<p>switched to branch &lsquo;dev&rsquo;</p>
+</blockquote>
+</li>
+<li>
+<p>然后，用 git branch 命令查看当前分支：</p>
+<pre><code class="bash">git branch
+</code></pre>
+
 <blockquote>
-<p>git branch 命令会列出所有分支，当前分支前面会标一个*号。</p>
-<p>在dev分支上正常提交</p>
+<ul>
+<li>dev<br />
+  master</li>
+</ul>
 </blockquote>
-</blockquote>
-<pre><code class="Bash">git add readme.txt
+</li>
+</ol>
+<p>git branch 命令会列出所有分支，当前分支前面会标一个 * 号</p>
+<ol>
+<li>
+<p>在dev分支上正常提交。</p>
+<pre><code class="bash">git add readme.txt
 git commit -m &quot;branch test&quot;
 </code></pre>
 
-<blockquote>
-<blockquote>
-<p>现在，dev分支的工作完成，我们可以切换回master分支<br />
-此刻master分支提交点并没有改变</p>
-</blockquote>
-</blockquote>
-<pre><code class="Bash">git checkout master
+</li>
+<li>
+<p>dev 分支的工作完成，我们就可以切换回master分支：</p>
+<pre><code class="bash">git checkout master
 </code></pre>
 
-<blockquote>
-<blockquote>
-<p>把dev分支的工作成果合并到master分支上：</p>
-</blockquote>
-</blockquote>
-<pre><code class="Bash">git merge dev
-</code></pre>
-
-<blockquote>
-<blockquote>
-<p>git merge命令用于合并指定分支到当前分支。</p>
-<p>合并完成后，就可以放心地删除dev分支了</p>
-</blockquote>
-</blockquote>
-<pre><code class="Bash">git branch -d dev
-git branch
-</code></pre>
-
-<blockquote>
-<blockquote>
-<p>删除后，查看branch,就只剩下master分支了。</p>
-</blockquote>
-</blockquote>
-<pre><code class="Bash">//查看分支
-git branch
-//创建分支
-git branch &lt;name&gt;
-//切换分支
-git checkout &lt;name&gt;
-//创建+切换分支
-git checkout -b &lt;name&gt;
-//合并某分支到当前分支
-git merge &lt;name&gt;
-//删除分支
-git branch -d &lt;name&gt;
-</code></pre>
-
-<blockquote>
-<p>解决冲突</p>
-<blockquote>
-<p>现在，master分支和feature1分支各自都分别有新的提交，变成了这样：</p>
-</blockquote>
-</blockquote>
-<p><img alt="feature1" src="https://www.liaoxuefeng.com/files/attachments/001384909115478645b93e2b5ae4dc78da049a0d1704a41000/0" /></p>
-<blockquote>
-<blockquote>
-<p>在这种情况下，Git无法执行快速合并，只能试图把各自修改合并起来，<br />
-但这种合并就可能会有冲突</p>
-</blockquote>
-</blockquote>
-<pre><code class="Bash">git merge feature1
-git status
-//会告诉我们冲突的文件
-//Git 会标记处不同分支的内容 修改后保存
-git log --graph --pretty=oneline --abbrev-commit
-//带参数git log --graph 也可以看到分支的合并情况。
-git branch -d feature1
-//删除feature1分支
-</code></pre>
-
-<blockquote>
-<blockquote>
-<p>分支管理策略</p>
-<p>通常合并分支时，如果可能，Git会用Fast forward模式，<br />
-但这种模式下，删除分之后，会丢掉分支信息。</p>
-<p>如果强制禁用Fast Forward模式，Git就会在merge时生成一个新的commit.</p>
-</blockquote>
-</blockquote>
-<pre><code class="Bash">//首先创建并切换Dev分支
-git checkout -b dev 
-//修改readme.txt 并提交一个新的commit
-git add readme.txt
-git commit -m &quot;add merge&quot;
-//切换回master
-git checkout master
-//准备合并dev分支，--no-ff表示禁用Fast forward
-git merge --no-ff -m &quot;merge with no-ff&quot; dev
-//合并后，使用git log 查看分支历史
-git log --graph --pretty=oneline --abbrev-commit
-</code></pre>
-
-<blockquote>
-<blockquote>
-<p>分支策略<br />
-实际开发中，应该按照几个基本原则进行分支管理</p>
-<ol>
-<li>master分支应该是非常稳定的，也就是仅用来发布新版本。</li>
-<li>干活都在dev分支上，也就是说dev分支是不稳定的。到某个时候，比如1.0发布时，<br />
-再把dev分支，合并到master上。</li>
-<li>每个人都有自己的分支，时不时地往dev分支上合并就可以了。</li>
+</li>
 </ol>
+<p>切换回master分支后，发现修改的内容不见了，因为哪个提交是在dev分支上,而master分支此刻的提交点并没有变：</p>
+<ol>
+<li>
+<p>将dev分支的工作成果合并到master分支上：</p>
+<pre><code class="bash">git merge dev
+</code></pre>
+
+</li>
+</ol>
+<p>git merge 命令用于合并指定分支到当前分支。合并后再查看，发现master跟dev分支的最新提交一致。</p>
+<p>Fast-forword信息，Git告诉我们，这次合并是&rdquo;快进模式&rdquo;，也就是直接把master指向dev的当前提交。</p>
+<ol>
+<li>
+<p>合并完成后，就可以放心地删除dev分支了。也可以不删除。</p>
+<pre><code class="bash">git branch -d dev
+</code></pre>
+
+</li>
+</ol>
+<h3 id="_12"><a name="user-content-_12" href="#_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>解决冲突</h3>
+<p>但是分支合并并不是一帆风顺</p>
+<ol>
+<li>
+<p>准备新的feature1分支，继续新分支开发：</p>
+<pre><code class="bash">git checkout -b feature1
+</code></pre>
+
+<p>修改readme.txt最后一行</p>
+<pre><code class="TXT">Creating a new branch is quick AND simple.
+</code></pre>
+
+</li>
+<li>
+<p>在feature1分支上提交：</p>
+<pre><code class="bash">git add readme.txt
+git commit -m &quot;AND simple&quot;
+</code></pre>
+
+<p>切换到master分支：</p>
+<pre><code class="bash">git checkout master
+</code></pre>
+
+<blockquote>
+<p>Switched to branch &lsquo;master&rsquo;<br />
+Your branch is ahead of &lsquo;origin/master&rsquo; by 1 commit.</p>
+</blockquote>
+</li>
+</ol>
+<p><strong> Git还会自动提示当前master分支比远程的master分支要超前1个提交。</strong></p>
+<p>在master分支上把readme.txt文件的最后一行改为：</p>
+<pre><code class="TXT">    Creating a new branch is quick &amp; simple.
+</code></pre>
+
+<ol>
+<li>
+<p>提交</p>
+<pre><code class="bash">git add readme.txt
+git commit -m &quot;&amp; simple&quot;
+</code></pre>
+
+</li>
+<li>
+<p>现在 master 分支和 feature1 分支各自都分别有新的提交</p>
+<p><img alt="master feature1" src="https://www.liaoxuefeng.com/files/attachments/001384909115478645b93e2b5ae4dc78da049a0d1704a41000/0" /></p>
+<p><strong> 这种情况下，Git无法执行&rdquo;快速合并&rdquo;，只能试图把各自的修改合并起来，但这种合并就可能会有冲突。</strong></p>
+<pre><code class="bash">git merge feature1
+</code></pre>
+
+<blockquote>
+<p>Auto-merging readme.txt<br />
+CONFLICT (content): Merge conflict in readme.txt<br />
+Automatic merge failed; fix conflicts and then commit the result.</p>
+</blockquote>
+</li>
+<li>
+<p>Git告诉我们，readme.txt文件存在冲突，必须手动解决冲突后再提交。<br />
+    git status 也可以告诉我们冲突的文件：</p>
+<pre><code class="bash">git status
+</code></pre>
+
+<blockquote>
+<p>On branch master<br />
+Your branch is ahead of &lsquo;origin/master&rsquo; by 2 commits.</p>
+<p>Unmerged paths:<br />
+  (use &ldquo;git add/rm <file>&hellip;&rdquo; as appropriate to mark resolution)</p>
+<pre><code>  both modified:      readme.txt
+</code></pre>
+<p>no changes added to commit (use &ldquo;git add&rdquo; and/or &ldquo;git commit -a&rdquo;)</p>
+</blockquote>
+<p>或者直接看readme.txt的内容：</p>
+<blockquote>
+<p>Git is a distributed version control system.<br />
+Git is free software distributed under the GPL.<br />
+Git has a mutable index called stage.<br />
+Git tracks changes of files.<br />
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br />
+Creating a new branch is quick &amp; simple.<br />
+=======<br />
+Creating a new branch is quick AND simple.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>feature1</p>
 </blockquote>
 </blockquote>
-<p>！<a href="https://www.liaoxuefeng.com/files/attachments/001384909239390d355eb07d9d64305b6322aaf4edac1e3000/0">branch</a></p></article></body></html>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong> Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容。</strong></p>
+</li>
+<li>
+<p>我们修改如下后保存：</p>
+<pre><code>Creating a new branch is quick and simple.
+</code></pre>
+
+<p>再提交：</p>
+<pre><code class="bash">git add readme.txt
+git commit -m &quot;comflict fixed&quot;
+</code></pre>
+
+</li>
+<li>
+<p>现在,master分支和feature1分支变成了下图所示：</p>
+<p><img alt="master now" src="https://www.liaoxuefeng.com/files/attachments/00138490913052149c4b2cd9702422aa387ac024943921b000/0" /></p>
+<p><strong> 用带参数的 git log 也可以看到分支的合并情况：</strong></p>
+<pre><code class="bash">$ git log --graph --pretty=oneline --abbrev-commit
+</code></pre>
+
+<blockquote>
+<ul>
+<li>59bc1cb conflict fixed<br />
+|\<br />
+| * 75a857c AND simple</li>
+<li>| 400b400 &amp; simple<br />
+|/</li>
+<li>fec145a branch test<br />
+&hellip;</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>最后删除feature1分支，也可以不删除。</p>
+<pre><code class="bash">git branch -d feature1
+</code></pre>
+
+</li>
+</ol>
+<h3 id="_13"><a name="user-content-_13" href="#_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>分支管理策略</h3>
+<p>通常合并分支时，Git会用 Fast forword 模式，但这种模式下，删除分之后，会丢掉分支信息。</p>
+<p>如果强制禁用 Fast forword 模式，Git 就会再merge时生成一个新的commit,从分支历史上就可以看出分支信息。</p>
+<ol>
+<li>
+<p>创建并切换dev分支：</p>
+<pre><code class="bash">git checkout -b dev
+</code></pre>
+
+</li>
+<li>
+<p>修改readme.txt文件，并提交一个新的commit:</p>
+<pre><code class="bash">git add readme.txt
+git commit -m &quot;add merge&quot;
+</code></pre>
+
+</li>
+<li>
+<p>切换回master:</p>
+<pre><code class="bash">git checkout master
+</code></pre>
+
+</li>
+<li>
+<p>准备合并dev分支，请注意 &ndash;no-ff 参数，表示禁用Fast forward:</p>
+<pre><code class="bash">git merge --no-ff -m &quot;merge with no-ff&quot; dev
+</code></pre>
+
+<p>因为本次合并创建一个新的commit,所以加上-m参数，把commit描述写进去。</p>
+<p>合并后，我们用git log查看分支历史</p>
+<pre><code class="bash">git log --graph --pretty=oneline --abbrev-commit
+</code></pre>
+
+<blockquote>
+<ul>
+<li>7825a50 merge with no-ff<br />
+|\<br />
+| * 6224937 add merge<br />
+|/</li>
+<li>59bc1cb conflict fixed<br />
+&hellip;</li>
+</ul>
+</blockquote>
+<p>不使用Fast forword模式，merge后</p>
+<p><img alt="no ff" src="https://www.liaoxuefeng.com/files/attachments/001384909222841acf964ec9e6a4629a35a7a30588281bb000/0" /></p>
+</li>
+</ol>
+<h3 id="_14"><a name="user-content-_14" href="#_14" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>分支策略</h3>
+<ol>
+<li>
+<p>首先，master 分支应该是非常稳定的，也就是仅用来发布新版本，平时不能再上面干活。</p>
+</li>
+<li>
+<p>干活都在dev分支上，dev分支是不稳定的，到某个时候，比如1.0版本发布的时候，再把dev分支合并到master上，在master分支发布1.0版本.</p>
+</li>
+<li>
+<p>每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</p>
+<p><img alt="branch" src="https://www.liaoxuefeng.com/files/attachments/001384909239390d355eb07d9d64305b6322aaf4edac1e3000/0" /></p>
+</li>
+</ol>
+<h3 id="bug"><a name="user-content-bug" href="#bug" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>BUG分支</h3>
+<blockquote>
+<p>软件开发中，每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，<br />
+然后将临时分支删除。</p>
+</blockquote>
+<p>当你接到一个修复一个代号101的bug的任务时，很自然想创建一个分支issue-101来修复它，但当前dev上进行的工作还没有提交：<br />
+并不是不想提交，而是工作只进行到一半，还没法提交，预计完成还需1天时间，但是，必须在两小时内修复BUG,怎么办？</p>
+<p><strong> Git 还提供了一个 stash 功能 </strong></p>
+<ol>
+<li>把当前工作现场&rdquo;储藏&rdquo;起来，等以后恢复现场后继续工作</li>
+</ol>
+<pre><code class="bash">git stash
+</code></pre>
+
+<ol>
+<li>首先确定要在哪个分支上修复BUG,假定需要在master分支上修复，就从master创建临时分支：</li>
+</ol>
+<pre><code class="bash">git checkout master
+git checkout -b issue-101
+</code></pre>
+
+<ol>
+<li>修复BUG 后，提交。</li>
+</ol>
+<pre><code class="bash">git add readme.txt
+git commit -m &quot;fix bug 101&quot;
+</code></pre>
+
+<ol>
+<li>切换到master分支，并完成合并，最后删除issue-01</li>
+</ol>
+<pre><code class="bash">git checkout master
+git merge --no-ff -m &quot;merged bug fix 101&quot; issue-101
+git branch -d issue-101
+</code></pre>
+
+<ol>
+<li>修复完BUG,是时候回dev分支干活了。</li>
+</ol>
+<pre><code class="bash">git checkout dev
+</code></pre>
+
+<ol>
+<li>但现在工作区是干净的，需要还原工作现场。</li>
+</ol>
+<pre><code class="bash">git stash list
+</code></pre>
+
+<blockquote>
+<p>stash@{0}: WIP on dev: 6224937 add merge</p>
+</blockquote>
+<ol>
+<li>恢复现场有两个办法：</li>
+</ol>
+<ul>
+<li>用git stash apple恢复，但是恢复后，stash内容并不删除，需要用git stash drop来删除</li>
+<li>另一种方式是用 git stash pop,恢复的同时把stash内容也删了</li>
+</ul>
+<p>再用 git stash list 查看，就看不到任何stash内容了：</p>
+<pre><code class="bash">git stash apply stash@{0}
+</code></pre>
+
+<h3 id="feature"><a name="user-content-feature" href="#feature" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Feature分支</h3>
+<p>软件开发中，总有无穷无尽的新的功能要不断添加进来。</p>
+<p><strong> 添加一个新功能时，你肯定不希望因为一些实验性质的代码，把主分支搞乱了，所以，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，最后，删除该feature分支。</strong></p>
+<ol>
+<li>
+<p>准备开发：</p>
+<pre><code class="bash">git checkout -b feature-vulcan
+</code></pre>
+
+<blockquote>
+<p>Switched to a new branch &lsquo;feature-vulcan&rsquo;</p>
+</blockquote>
+</li>
+<li>
+<p>开发完成：</p>
+<pre><code class="bash">$ git add vulcan.py
+$ git status
+# On branch feature-vulcan
+# Changes to be committed:
+#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+#
+#       new file:   vulcan.py
+#
+$ git commit -m &quot;add feature vulcan&quot;
+[feature-vulcan 756d4af] add feature vulcan
+1 file changed, 2 insertions(+)
+create mode 100644 vulcan.py
+</code></pre>
+
+</li>
+<li>
+<p>切回dev，准备合并</p>
+<pre><code class="bash">git checkout dev
+</code></pre>
+
+<p>一切顺利的话，feature分支和bug分支是类似的，合并，然后删除。</p>
+</li>
+<li>
+<p>但是，突然命令新功能撤销</p>
+<pre><code class="bash">$ git branch -d feature-vulcan
+error: The branch 'feature-vulcan' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D feature-vulcan'.
+</code></pre>
+
+<blockquote>
+<p>Git友情提醒，feature-vulcan分支还没有被合并，如果删除，将丢失掉修改，<br />
+如果要强行删除，需要使用命令git branch -D feature-vulcan。</p>
+</blockquote>
+</li>
+<li>
+<p>强行删除</p>
+<pre><code class="bash">$ git branch -D feature-vulcan
+Deleted branch feature-vulcan (was 756d4af).
+</code></pre>
+
+</li>
+</ol>
+<h3 id="_15"><a name="user-content-_15" href="#_15" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>多人协作</h3>
+<ol>
+<li>
+<p>产看远程仓库信息</p>
+<ul>
+<li>
+<p>要产看远程库的信息，用git remote:</p>
+<pre><code class="bash">$ git remote
+origin
+</code></pre>
+
+</li>
+<li>
+<p>或者，使用git remote -v 显示更详细的信息：</p>
+<pre><code class="bash">$ git remote -v
+origin  git@github.com:michaelliao/learngit.git (fetch)
+origin  git@github.com:michaelliao/learngit.git (push)
+</code></pre>
+
+<p><strong> 上面显示了可以抓取和推送的origin的地址。如果没有推送权限，就看不到push的地址。</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>推送分支</p>
+<p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
+<pre><code class="bash">$ git push origin master
+</code></pre>
+
+<p>如果要推送其他分支，比如dev，就改成：</p>
+<pre><code class="bash">$ git push origin dev
+</code></pre>
+
+<p>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
+<ul>
+<li>
+<p>master分支是主分支，因此要时刻与远程同步；</p>
+</li>
+<li>
+<p>dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</p>
+</li>
+<li>
+<p>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</p>
+</li>
+<li>
+<p>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>抓取分支</p>
+<p>多人协作时，大家都会往master和dev分支上推送各自的修改。</p>
+<ol>
+<li>
+<p>现在，模拟一个你的小伙伴，可以在另一台电脑（注意要把SSH Key添加到GitHub）或者同一台电脑的另一个目录下克隆：</p>
+<pre><code class="bash">$ git clone git@github.com:michaelliao/learngit.git
+Cloning into 'learngit'...
+remote: Counting objects: 46, done.
+remote: Compressing objects: 100% (26/26), done.
+remote: Total 46 (delta 16), reused 45 (delta 15)
+Receiving objects: 100% (46/46), 15.69 KiB | 6 KiB/s, done.
+Resolving deltas: 100% (16/16), done.
+</code></pre>
+
+<p><strong> 当你的小伙伴从远程库clone时，默认情况下，你的小伙伴只能看到本地的master分支。</strong></p>
+</li>
+<li>
+<p>可以用git branch命令看看：</p>
+<pre><code class="bash">$ git branch
+* master
+</code></pre>
+
+</li>
+<li>
+<p>现在，你的小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支：</p>
+<pre><code class="bash">$ git checkout -b dev origin/dev
+</code></pre>
+
+</li>
+<li>
+<p>现在，他就可以在dev上继续修改，然后，时不时地把dev分支push到远程：</p>
+<pre><code class="bash">$ git commit -m &quot;add /usr/bin/env&quot;
+[dev 291bea8] add /usr/bin/env
+ 1 file changed, 1 insertion(+)
+$ git push origin dev
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 349 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:michaelliao/learngit.git
+    fc38031..291bea8  dev -&gt; dev
+</code></pre>
+
+</li>
+</ol>
+</li>
+<li>
+<p>解决冲突</p>
+<ol>
+<li>
+<p>你的小伙伴已经向origin/dev分支推送了他的提交，而碰巧你也对同样的文件作了修改，并试图推送：</p>
+<pre><code class="bash">$ git add hello.py 
+$ git commit -m &quot;add coding: utf-8&quot;
+[dev bd6ae48] add coding: utf-8
+ 1 file changed, 1 insertion(+)
+$ git push origin dev
+</code></pre>
+
+<blockquote>
+<p>To <a href="mailto:git@github.com">git@github.com</a>:michaelliao/learngit.git<br />
+ ! [rejected]        dev -&gt; dev (non-fast-forward)<br />
+error: failed to push some refs to &lsquo;<a href="mailto:git@github.com">git@github.com</a>:michaelliao/learngit.git&rsquo;<br />
+hint: Updates were rejected because the tip of your current branch is behind<br />
+hint: its remote counterpart. Merge the remote changes (e.g. &lsquo;git pull&rsquo;)<br />
+hint: before pushing again.<br />
+hint: See the &lsquo;Note about fast-forwards&rsquo; in &lsquo;git push &ndash;help&rsquo; for details.</p>
+</blockquote>
+<p><strong> 推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单. </strong></p>
+</li>
+<li>
+<p>Git已经提示我们，先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送：</p>
+<pre><code class="bash">$ git pull
+remote: Counting objects: 5, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0)
+Unpacking objects: 100% (3/3), done.
+From github.com:michaelliao/learngit
+   fc38031..291bea8  dev        -&gt; origin/dev
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details
+
+    git pull &lt;remote&gt; &lt;branch&gt;
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream dev origin/&lt;branch&gt;
+</code></pre>
+
+<p><strong> git pull也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接. </strong></p>
+</li>
+<li>
+<p>根据提示，设置dev和origin/dev的链接：</p>
+<pre><code class="bash">$ git branch --set-upstream dev origin/dev
+Branch dev set up to track remote branch dev from origin.
+</code></pre>
+
+</li>
+<li>
+<p>再pull：</p>
+<pre><code class="bash">$ git pull
+Auto-merging hello.py
+CONFLICT (content): Merge conflict in hello.py
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+
+</li>
+<li>
+<p>这回git pull成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再push：</p>
+<pre><code class="bash">$ git commit -m &quot;merge &amp; fix hello.py&quot;
+[dev adca45d] merge &amp; fix hello.py
+$ git push origin dev
+Counting objects: 10, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (6/6), 747 bytes, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To git@github.com:michaelliao/learngit.git
+   291bea8..adca45d  dev -&gt; dev
+</code></pre>
+
+</li>
+</ol>
+</li>
+<li>
+<p>多人协作的工作模式</p>
+<ol>
+<li>
+<p>首先，可以试图用git push origin branch-name推送自己的修改；</p>
+</li>
+<li>
+<p>如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；</p>
+</li>
+<li>
+<p>如果合并有冲突，则解决冲突，并在本地提交；</p>
+</li>
+<li>
+<p>没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！</p>
+</li>
+</ol>
+<p><strong> 如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch &ndash;set-upstream branch-name origin/branch-name。</strong></p>
+</li>
+</ol>
+<h3 id="_16"><a name="user-content-_16" href="#_16" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>标签管理</h3>
+<p>Git的标签虽然是版本库的快照，但其实它就是指向某个commit的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。</p>
+<p><strong> tag就是一个让人容易记住的有意义的名字，它跟某个commit绑在一起。</strong></p>
+<ol>
+<li>
+<p>创建标签</p>
+<ol>
+<li>
+<p>首先切换到需要打标签的分支上：</p>
+<pre><code class="bash">$ git branch
+* dev
+  master
+$ git checkout master
+Switched to branch 'master'
+</code></pre>
+
+</li>
+<li>
+<p>然后，敲命令 git tag <name> 就可以打一个新标签：、</p>
+<pre><code class="bash">$ git tag v1.0
+</code></pre>
+
+</li>
+<li>
+<p>再用命令git tag查看标签：</p>
+<pre><code class="bash">$ git tag
+v0.9
+v1.0
+</code></pre>
+
+<p><strong> 注意，标签不是按时间顺序列出，而是按字母排序的。</strong></p>
+</li>
+<li>
+<p>可以用git show <tagname>查看标签信息：</p>
+<pre><code class="bash">$ git show v0.9
+commit 622493706ab447b6bb37e4e2a2f276a20fed2ab4
+Author: Michael Liao &lt;askxuefeng@gmail.com&gt;
+Date:   Thu Aug 22 11:22:08 2013 +0800
+
+    add merge
+...
+</code></pre>
+
+<p>可以看到，v0.9确实打在add merge这次提交上。</p>
+</li>
+<li>
+<p>还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字：</p>
+<pre><code class="bash">$ git tag -a v0.1 -m &quot;version 0.1 released&quot; 3628164
+</code></pre>
+
+<p>用命令git show <tagname>可以看到说明文字：</p>
+<pre><code class="bash">$ git show v0.1
+tag v0.1
+Tagger: Michael Liao &lt;askxuefeng@gmail.com&gt;
+Date:   Mon Aug 26 07:28:11 2013 +0800
+
+version 0.1 released
+
+commit 3628164fb26d48395383f8f31179f24e0882e1e0
+Author: Michael Liao &lt;askxuefeng@gmail.com&gt;
+Date:   Tue Aug 20 15:11:49 2013 +0800
+
+    append GPL
+</code></pre>
+
+</li>
+<li>
+<p>还可以通过-s用私钥签名一个标签：</p>
+<pre><code class="bash">$ git tag -s v0.2 -m &quot;signed version 0.2 released&quot; fec145a
+</code></pre>
+
+<p>签名采用PGP签名，因此，必须首先安装gpg（GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错：</p>
+<blockquote>
+<p>gpg: signing failed: secret key not available<br />
+error: gpg failed to sign the data<br />
+error: unable to sign the tag</p>
+</blockquote>
+<p>如果报错，请参考GnuPG帮助文档配置Key。</p>
+<p>用命令git show <tagname>可以看到PGP签名信息：</p>
+<pre><code class="bash">$ git show v0.2
+tag v0.2
+Tagger: Michael Liao &lt;askxuefeng@gmail.com&gt;
+Date:   Mon Aug 26 07:28:33 2013 +0800
+
+signed version 0.2 released
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.12 (Darwin)
+
+iQEcBAABAgAGBQJSGpMhAAoJEPUxHyDAhBpT4QQIAKeHfR3bo...
+-----END PGP SIGNATURE-----
+
+commit fec145accd63cdc9ed95a2f557ea0658a2a6537f
+Author: Michael Liao &lt;askxuefeng@gmail.com&gt;
+Date:   Thu Aug 22 10:37:30 2013 +0800
+
+    branch test
+</code></pre>
+
+<p>用PGP签名的标签是不可伪造的，因为可以验证PGP签名。验证签名的方法比较复杂，这里就不介绍了。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>操作标签</p>
+<ol>
+<li>
+<p>删除标签</p>
+<p>如果标签打错了，也可以删除：</p>
+<pre><code class="bash">$ git tag -d v0.1
+Deleted tag 'v0.1' (was e078af9)
+</code></pre>
+
+<p>因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。</p>
+</li>
+<li>
+<p>如果要推送某个标签到远程，使用命令git push origin <tagname>：</p>
+<pre><code class="bash">$ git push origin v1.0
+Total 0 (delta 0), reused 0 (delta 0)
+To git@github.com:michaelliao/learngit.git
+ * [new tag]         v1.0 -&gt; v1.0
+</code></pre>
+
+<p>或者，一次性推送全部尚未推送到远程的本地标签：</p>
+<pre><code class="bash">$ git push origin --tags
+Counting objects: 1, done.
+Writing objects: 100% (1/1), 554 bytes, done.
+Total 1 (delta 0), reused 0 (delta 0)
+To git@github.com:michaelliao/learngit.git
+ * [new tag]         v0.2 -&gt; v0.2
+ * [new tag]         v0.9 -&gt; v0.9
+</code></pre>
+
+</li>
+<li>
+<p>如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：</p>
+<pre><code class="bash">$ git tag -d v0.9
+Deleted tag 'v0.9' (was 6224937)
+</code></pre>
+
+<p>然后，从远程删除。删除命令也是push，但是格式如下：</p>
+<pre><code class="bash">$ git push origin :refs/tags/v0.9
+To git@github.com:michaelliao/learngit.git
+ - [deleted]         v0.9
+</code></pre>
+
+<p>要看看是否真的从远程库删除了标签，可以登陆GitHub查看</p>
+</li>
+</ol>
+</li>
+</ol>
+<p><span id="jump_5"></span></p>
+<h2 id="githubgitlib"><strong><em>GitHub</em></strong>、码云、<strong><em>Gitlib</em></strong>使用</h2>
+<h3 id="github"><a name="user-content-github" href="#github" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>GitHub</h3>
+<p>参与到一个开源项目</p>
+<p>比如人气极高的bootstrap项目，这是一个非常强大的CSS框架，你可以访问它的项目主页<a href="https://github.com/twbs/bootstrap"><a href="https://github.com/twbs/bootstrap"><a href="https://github.com/twbs/bootstrap">https://github.com/twbs/bootstrap</a></a></a>，点“ <strong><em>Fork</em></strong> ”就在自己的账号下克隆了一个bootstrap仓库，然后，从自己的账号下clone：</p>
+<pre><code class="bash">git clone git@github.com:michaelliao/bootstrap.git
+</code></pre>
+
+<blockquote>
+<p>一定要从自己的账号下clone仓库，这样你才能推送修改。<br />
+如果从bootstrap的作者的仓库地址 <br />
+<a href="mailto:git@github.com">git@github.com</a>:twbs/bootstrap.git克隆，<br />
+因为没有权限，你将不能推送修改。</p>
+</blockquote>
+<p>Bootstrap的官方仓库twbs/bootstrap、你在GitHub上克隆的仓库my/bootstrap，以及你自己克隆到本地电脑的仓库，他们的关系就像下图显示的那样：</p>
+<p><img alt="bootstrap" src="https://www.liaoxuefeng.com/files/attachments/001384926554932eb5e65df912341c1a48045bc274ba4bf000/0" /></p>
+<p>如果你希望bootstrap的官方库能接受你的修改，你就可以在GitHub上发起一个pull request。当然，对方是否接受你的pull request就不一定了。</p>
+<h3 id="_17"><a name="user-content-_17" href="#_17" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>码云</h3>
+<ol>
+<li>
+<p>使用码云和使用GitHub类似，我们在码云上注册账号并登录后，需要先上传自己的SSH公钥。选择右上角用户头像 -&gt; 菜单“修改资料”，然后选择“SSH公钥”，填写一个便于识别的标题，然后把用户主目录下的.ssh/id_rsa.pub文件的内容粘贴进去：</p>
+<p><img alt="gitee" src="https://www.liaoxuefeng.com/files/attachments/0015014623796132cd9d2a2bdef4efd800ffa0e1df42964000/l" /></p>
+</li>
+<li>
+<p>关联本地Git库，我们在码云上创建一个新的项目，选择右上角用户头像 -&gt; 菜单“控制面板”，然后点击“创建项目”：</p>
+<p><img alt="gitee.com" src="https://www.liaoxuefeng.com/files/attachments/00150146266854163b62c2574ae45569179a3d22b479a4b000/l" /></p>
+</li>
+<li>
+<p>在本地库使用命令 git remote add 把它和码云的远程库关联：</p>
+<pre><code class="bash">git remote add origin git@gitee.com:liaoxuefeng/learngit.git
+</code></pre>
+
+<p>之后就可以正常地用 git push 和 git pull 推送了！</p>
+</li>
+<li>
+<p>如果在使用命令git remote add时报错：</p>
+<pre><code class="bash">git remote add origin git@gitee.com:liaoxuefeng/learngit.git
+fatal: remote origin already exists.
+</code></pre>
+
+</li>
+<li>
+<p>这说明本地库已经关联了一个名叫origin的远程库，此时，可以先用git remote -v查看远程库信息：</p>
+<pre><code class="bash">git remote -v
+origin    git@github.com:michaelliao/learngit.git (fetch)
+origin    git@github.com:michaelliao/learngit.git (push)
+</code></pre>
+
+<p>可以看到，本地库已经关联了origin的远程库，并且，该远程库指向GitHub。</p>
+</li>
+<li>
+<p>我们可以删除已有的GitHub远程库：</p>
+<pre><code class="bash">git remote rm origin
+</code></pre>
+
+</li>
+<li>
+<p>再关联码云的远程库（注意路径中需要填写正确的用户名）：</p>
+<pre><code class="bash">git remote add origin git@gitee.com:liaoxuefeng/learngit.git
+</code></pre>
+
+<p>此时，我们再查看远程库信息：</p>
+<pre><code class="bash">git remote -v
+origin    git@gitee.com:liaoxuefeng/learngit.git (fetch)
+origin    git@gitee.com:liaoxuefeng/learngit.git (push)
+</code></pre>
+
+<p>现在可以看到，origin已经被关联到码云的远程库了。通过git push命令就可以把本地库推送到Gitee上。</p>
+</li>
+<li>
+<p>一个本地库同时关联GitHub，又关联码云。</p>
+<p>使用多个远程库时，我们要注意，git给远程库起的默认名称是origin，如果有多个远程库，我们需要用不同的名称来标识不同的远程库。</p>
+<ol>
+<li>仍然以learngit本地库为例，我们先删除已关联的名为origin的远程库：</li>
+</ol>
+<pre><code class="bash">git remote rm origin
+</code></pre>
+
+<ol>
+<li>然后，先关联GitHub的远程库：</li>
+</ol>
+<pre><code class="bash">git remote add github git@github.com:michaelliao/learngit.git
+</code></pre>
+
+<p><strong> 注意，远程库的名称叫github，不叫origin了。</strong></p>
+<ol>
+<li>接着，再关联码云的远程库：</li>
+</ol>
+<pre><code class="bash">git remote add gitee git@gitee.com:liaoxuefeng/learngit.git
+</code></pre>
+
+<p><strong> 同样注意，远程库的名称叫gitee，不叫origin。</strong></p>
+<ol>
+<li>现在，我们用git remote -v查看远程库信息，可以看到两个远程库：</li>
+</ol>
+<pre><code class="bash">git remote -v
+gitee    git@gitee.com:liaoxuefeng/learngit.git (fetch)
+gitee    git@gitee.com:liaoxuefeng/learngit.git (push)
+github    git@github.com:michaelliao/learngit.git (fetch)
+github    git@github.com:michaelliao/learngit.git (push)
+</code></pre>
+
+<ol>
+<li>
+<p>如果要推送到GitHub，使用命令：</p>
+<pre><code class="bash">git push github master
+</code></pre>
+
+<p>如果要推送到码云，使用命令：</p>
+<pre><code class="bash">git push gitee master
+</code></pre>
+
+</li>
+<li>
+<p>这样一来，我们的本地库就可以同时与多个远程库互相同步：</p>
+<p><img alt="多仓库" src="https://www.liaoxuefeng.com/files/attachments/001501462090750dbdbfd0431624ea09b2f5dd88b7b8e57000/m" /></p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="gitlib"><a name="user-content-gitlib" href="#gitlib" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>GitLib</h3>
+<table>
+<thead>
+<tr>
+<th align="center">Title</th>
+<th align="center">Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Distribution</td>
+<td align="center">CentOS 6.8 Minimal</td>
+</tr>
+<tr>
+<td align="center">GitLab version</td>
+<td align="center">8.9</td>
+</tr>
+<tr>
+<td align="center">Web Server</td>
+<td align="center">Apache, Nginx</td>
+</tr>
+<tr>
+<td align="center">Init system</td>
+<td align="center">sysvinit</td>
+</tr>
+<tr>
+<td align="center">Database</td>
+<td align="center">MySQL, PostgreSQL</td>
+</tr>
+</tbody>
+</table>
+<p><strong> 安装顺序应该从上到下，如果偏离顺序可能回发生不可预料的错误。</strong></p>
+<p>许多Linux软件安装指南简单地说：“禁用selinux和防火墙”。本指南不禁用他们，只是配置它们就可以。</p>
+<p>GitLab安装包括设置以下组件：</p>
+<ol>
+<li>安装基本操作系统（CentOS 6.8 Minimal）和 Packages/Dependencies</li>
+<li>Ruby</li>
+<li>Go</li>
+<li>系统级用户</li>
+<li>数据库</li>
+<li>Redis</li>
+<li>GitLab</li>
+<li>Web Server</li>
+<li>防火墙</li>
+</ol>
+<h4 id="1-centos-68-minimal"><a name="user-content-1-centos-68-minimal" href="#1-centos-68-minimal" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 安装操作系统（CentOS  6.8 Minimal ）</h4>
+<p>通过下载 CentOS 6.8 相应的简洁安装iso文件，只需启动iso文件并安装系统，进行完全干净的最小安装。</p>
+<p><strong> 请注意，在安装期间，可以使用 “配置网络” 选项 ，以启动网络接口的“自动连接”配置 </strong></p>
+<p>如果忘记这一步，则网络无法连接。</p>
+<p>最终结果是CentOS的最低限度安装，只有网络连接，（几乎）没有其他服务。</p>
+<h4 id="2"><a name="user-content-2" href="#2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. 更新和添加基本的软件和服务</h4>
+<ol>
+<li>
+<p>添加EPEL存储库</p>
+<ol>
+<li>
+<p>从 fedoraproject 下载 EPEL仓库的GPG密钥并安装到你的系统中：</p>
+<pre><code class="bash">wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6 https://getfedora.org/static/0608B895.txt
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+</code></pre>
+
+</li>
+<li>
+<p>验证密钥是否安装成功</p>
+<pre><code class="bash">rpm -qa gpg*
+gpg-pubkey-0608b895-4bd22942
+</code></pre>
+
+</li>
+<li>
+<p>安装epel-release-6-8.noarch 软件包，这将在您的系统上启用EPEL存储库：</p>
+<pre><code class="bash">rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+</code></pre>
+
+<p>注意：不要介意x86_64,如果安装在i686系统上，您可以使用相同的命令。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>添加Remide的RPM存储库</p>
+<p>我们利用Remide的RPM存储库来获取Redis的最新版本。</p>
+<ol>
+<li>
+<p>下载Remi存储库的GPG密钥，并将其安装在您的系统上：</p>
+<pre><code class="bash">wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-remi http://rpms.famillecollet.com/RPM-GPG-KEY-remi
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+</code></pre>
+
+</li>
+<li>
+<p>验证密钥已成功安装：</p>
+<pre><code class="bash">rpm -qa gpg*
+gpg-pubkey-00f97f56-467e318a
+</code></pre>
+
+</li>
+<li>
+<p>现在安装remi-release-6软件包，这将使您的系统上的安全存储库可以使用：</p>
+<pre><code class="bash">rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+</code></pre>
+
+</li>
+<li>
+<p>验证EPEL和remi-safe存储库是否启用，如下所示：</p>
+<pre><code class="bash">yum repolist
+</code></pre>
+
+<blockquote>
+<p>repo id   repo name          status<br />
+base      CentOS-6 - Base    6696<br />
+epel      Extra Packages for Enterprise Linux 6 - x86_64   12125<br />
+extras    CentOS-6 - Extras  61<br />
+remi-safe Safe Remi&rsquo;s RPM repository for Enterprise Linux 6 - x86_64        827<br />
+updates   CentOS-6 - Updates 137<br />
+repolist: 19846</p>
+</blockquote>
+<p>如果看不到它们，请使用以下命令（从yum-utils包）启用它们：</p>
+<pre><code class="bash">yum-config-manager --enable epel --enable remi-safe
+</code></pre>
+
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="3-gitlab"><a name="user-content-3-gitlab" href="#3-gitlab" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. 安装GitLab所需的工具</h4>
+<pre><code class="bash">yum -y update
+yum -y groupinstall 'Development Tools'
+yum -y install readline readline-devel ncurses-devel gdbm-devel glibc-devel tcl-devel openssl-devel curl-devel expat-devel db4-devel byacc sqlite-devel libyaml libyaml-devel libffi libffi-devel libxml2 libxml2-devel libxslt libxslt-devel libicu libicu-devel system-config-firewall-tui redis sudo wget crontabs logwatch logrotate perl-Time-HiRes git cmake libcom_err-devel.i686 libcom_err-devel.x86_64 nodejs
+
+# For reStructuredText markup language support, install required package:
+yum -y install python-docutils
+</code></pre>
+
+<p>如果未安装某些软件包（例如gdbm-devel,libffi-devel和libicu-devel）,请将rhel6可选软件包repo添加到服务器以获取这些软件包：</p>
+<pre><code class="bash">yum-config-manager --enable rhel-6-server-optional-rpms
+</code></pre>
+
+<h4 id="4"><a name="user-content-4" href="#4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4. 安装邮件服务器</h4>
+<p>为了接收邮件通知，请确保安装邮件服务器。</p>
+<pre><code class="bash">yum -y install postfix
+</code></pre>
+
+<p>要使用和配置sendmail而不是postfix，请参阅 <a href="https://github.com/gitlabhq/gitlab-recipes/blob/master/e-mail/configure_email.md">高级电子邮件配置</a> 。</p>
+<h4 id="5"><a name="user-content-5" href="#5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5. 配置默认编辑器</h4>
+<p>在安装过程中，有些文件需要手动编辑。您可以选择nano，vi，vim等编辑器</p>
+<p>在这种情况下，我们将使用vim作为默认编辑器来保持一致性。如果您熟悉vim将其设置为默认编辑器，其命令如下。</p>
+<pre><code class="bash"># Install vim and set as default editor
+yum -y install vim-enhanced
+ln -s /usr/bin/vim /usr/bin/editor
+</code></pre>
+
+<p>要将来删除此别名：</p>
+<pre><code class="bash">rm -i /usr/bin/editor
+</code></pre>
+
+<h4 id="6git"><a name="user-content-6git" href="#6git" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6.使用源码安装Git</h4>
+<ol>
+<li>
+<p>确保Git是2.7.4或更高版本</p>
+<pre><code class="bash">git --version
+</code></pre>
+
+</li>
+<li>
+<p>如果没有，请从源安装。首先删除系统Git：</p>
+<pre><code class="bash">yum -y remove git
+</code></pre>
+
+</li>
+<li>
+<p>安装Git编译的必备文件：</p>
+<pre><code class="bash">yum install zlib-devel perl-CPAN gettext curl-devel expat-devel gettext-devel openssl-devel
+</code></pre>
+
+</li>
+<li>
+<p>下载并解压缩：</p>
+<pre><code class="bash">mkdir /tmp/git &amp;&amp; cd /tmp/git
+curl --progress https://www.kernel.org/pub/software/scm/git/git-2.9.0.tar.gz | tar xz
+cd git-2.9.0
+./configure
+make
+make prefix=/usr/local install
+</code></pre>
+
+</li>
+<li>
+<p>确保Git在您的$PATH中：</p>
+<pre><code class="bash">which git
+</code></pre>
+
+<p>您可能需要注销并重新登录以$PATH使其生效。 </p>
+<p>注意：编辑时config/gitlab.yml，将git更改bin_path为/usr/local/bin/git(自己的安装路径)。</p>
+</li>
+</ol>
+<h4 id="7-ruby"><a name="user-content-7-ruby" href="#7-ruby" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7. Ruby</h4>
+<p>使用ruby版本管理器，如RVM，rbenv或chruby与GitLab在生产中经常导致难以诊断的问题。版本管理器不支持，我们强烈建议大家按照以下说明使用系统红宝石。</p>
+<ol>
+<li>
+<p>删除旧的Ruby 1.8包（如果存在）。GitLab仅支持Ruby 2.1发行版系列：</p>
+<pre><code class="bash">yum remove ruby
+</code></pre>
+
+<p>如果存在其他任何Ruby构造删除他们：</p>
+<pre><code class="bash">cd &lt;your-ruby-source-path&gt;
+make uninstall
+</code></pre>
+
+</li>
+<li>
+<p>下载Ruby并编译它：</p>
+<pre><code class="bash">mkdir /tmp/ruby &amp;&amp; cd /tmp/ruby
+curl --progress https://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.9.tar.gz | tar xz
+cd ruby-2.1.9
+./configure --disable-install-rdoc
+make
+make prefix=/usr/local install
+</code></pre>
+
+</li>
+<li>
+<p>安装Bundler Gem：</p>
+<pre><code class="bash">gem install bundler --no-doc
+</code></pre>
+
+</li>
+<li>
+<p>注销并重新登录$PATH才能生效。检查红宝石是否正确安装：</p>
+<pre><code class="bash">which ruby
+# /usr/local/bin/ruby
+ruby -v
+# ruby 2.1.10p492 (2016-04-01 revision 54464) [x86_64-linux]
+</code></pre>
+
+</li>
+</ol>
+<h4 id="8-go"><a name="user-content-8-go" href="#8-go" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>8. GO</h4>
+<p>由于GitLab 8.0，Git HTTP请求由gitlab-workhorse（以前的gitlab-git-http-server）处理。这是Go中写的一个小守护进程。要安装gitlab-workhorse，我们需要一个Go编译器。</p>
+<pre><code class="bash">yum install golang golang-bin golang-src
+</code></pre>
+
+<h4 id="9"><a name="user-content-9" href="#9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>9. 系统用户</h4>
+<ol>
+<li>git为Gitlab 创建一个用户：</li>
+</ol>
+<pre><code class="bash">adduser --system --shell /bin/bash --comment 'GitLab' --create-home --home-dir /home/git/ git
+</code></pre>
+
+<ol>
+<li>重要提示：为了包含/usr/local/bingit用户的PATH，一种方法是编辑sudoers文件。作为根运行：</li>
+</ol>
+<pre><code class="bash">visudo
+</code></pre>
+
+<ol>
+<li>然后搜索这一行：</li>
+</ol>
+<pre><code class="bash">Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+</code></pre>
+
+<ol>
+<li>并附加/usr/local/bin如下：</li>
+</ol>
+<pre><code class="bash">Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
+</code></pre>
+
+<p>保存并退出。</p>
+<h4 id="10"><a name="user-content-10" href="#10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>10. 数据库</h4>
+<ol>
+<li>
+<p>PostgreSQL（推荐）</p>
+<p>注意：因为我们需要使用扩展，我们至少需要pgsql 9.1，并且默认的8.x on centos将不起作用。我们需要启用PGDG存储库来克隆他们。</p>
+<ol>
+<li>
+<p>如果有以前的版本删除它们：</p>
+<pre><code class="bash">yum remove postgresql
+</code></pre>
+
+</li>
+<li>
+<p>安装pgdg存储库：</p>
+<pre><code class="bash">rpm -Uvh http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-2.noarch.rpm
+</code></pre>
+
+</li>
+<li>
+<p>安装postgresql93-server，postgreqsql93-devel和postgresql93-contrib库：</p>
+<pre><code class="bash">yum install postgresql93-server postgresql93-devel postgresql93-contrib
+</code></pre>
+
+</li>
+<li>
+<p>重命名服务脚本：</p>
+<pre><code class="bash">mv /etc/init.d/{postgresql-9.3,postgresql}
+</code></pre>
+
+</li>
+<li>
+<p>初始化数据库：</p>
+<pre><code class="bash">service postgresql initdb
+</code></pre>
+
+</li>
+<li>
+<p>启动服务并配置服务以启动启动：</p>
+<pre><code class="bash">service postgresql start
+chkconfig postgresql on
+</code></pre>
+
+</li>
+<li>
+<p>配置数据库用户和密码：</p>
+<pre><code class="Bash">su - postgres
+psql -d template1
+
+psql (9.4.3)
+Type &quot;help&quot; for help.
+template1=# CREATE USER git CREATEDB;
+CREATE ROLE
+template1=# CREATE DATABASE gitlabhq_production OWNER git;
+CREATE DATABASE
+template1=# CREATE EXTENSION IF NOT EXISTS pg_trgm;
+template1=# \q
+exit # exit uid=postgres, return to root
+</code></pre>
+
+</li>
+<li>
+<p>将连接测试为gitlab（uid = git）用户。你应该是root来开始这个测试：</p>
+<pre><code class="bash">whoami
+</code></pre>
+
+</li>
+<li>
+<p>尝试以git用户身份登录Postgres：</p>
+<pre><code class="bash">sudo -u git psql -d gitlabhq_production
+</code></pre>
+
+<p>如果您看到以下内容：</p>
+<blockquote>
+<p>gitlabhq_production=&gt;</p>
+</blockquote>
+<p>您的密码已成功接受，您可以键入\ q退出。</p>
+</li>
+<li>
+<p>检查pg_trgm分机是否启用：</p>
+<pre><code class="bash">SELECT true AS enabled
+FROM pg_available_extensions
+WHERE name = 'pg_trgm'
+AND installed_version IS NOT NULL;
+</code></pre>
+
+<p>如果分机启用，则会产生以下输出：</p>
+<blockquote>
+<h2 id="enabled"><a name="user-content-enabled" href="#enabled" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>enabled</h2>
+<p>t<br />
+(1 row)</p>
+</blockquote>
+</li>
+<li>
+<p>确保您正在使用正确的设置，/var/lib/pgsql/9.3/data/pg_hba.conf 无法识别问题（您可以使用trust over ident）：</p>
+<pre><code class="bash">host    all             all             127.0.0.1/32            trust
+</code></pre>
+
+<p>有关身份验证方法的更多信息，请查看官方文档。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>MySQL </p>
+<p>由于各种问题，我们不建议使用MySQL。</p>
+<ol>
+<li>
+<p>安装mysql并启用mysqld服务以启动应用：</p>
+<p><pre><code class="bash">yum install -y mysql-server mysql-devel
+chkconfig mysqld on 
+service mysqld start
+</code></pre><br />
+    2. 确保MySQL版本 5.5.14 或更高版本：</p>
+<pre><code class="bash">mysql --version
+</code></pre>
+
+</li>
+<li>
+<p>确保已经安装</p>
+<pre><code class="bash">mysql_secure_installation
+</code></pre>
+
+</li>
+<li>
+<p>登陆到MySQL（键入数据库root密码）：</p>
+<pre><code class="bash">mysql -u root -p
+</code></pre>
+
+</li>
+<li>
+<p>为GitLab创建一个用户（在下面的命令中将$密码更改为您选择的真实密码）：</p>
+<pre><code class="sql">CREATE USER 'git'@'localhost' IDENTIFIED BY '$password';
+</code></pre>
+
+</li>
+<li>
+<p>确保您可以使用必需的InnoDB引擎来支持长索引。如果失败，请检查您的MySQL配置文件（例如/etc/mysql/<em>.cnf，/etc/mysql/conf.d/</em>）的设置“innodb = off”。</p>
+<pre><code class="sql">SET storage_engine=INNODB;
+</code></pre>
+
+</li>
+<li>
+<p>创建GitLab生产数据库：</p>
+<pre><code class="sql">CREATE DATABASE IF NOT EXISTS `gitlabhq_production` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`;
+</code></pre>
+
+</li>
+<li>
+<p>授予GitLab用户对表的必要权限：</p>
+<pre><code class="sql">GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, CREATE TEMPORARY TABLES, DROP, INDEX, ALTER, LOCK TABLES, REFERENCES ON `gitlabhq_production`.* TO 'git'@'localhost';
+</code></pre>
+
+</li>
+<li>
+<p>退出数据库会话：</p>
+<pre><code class="sql">\q
+</code></pre>
+
+</li>
+<li>
+<p>尝试使用新用户连接到新数据库：</p>
+<pre><code class="bash">sudo -u git -H mysql -u git -p -D gitlabhq_production
+</code></pre>
+
+</li>
+<li>
+<p>键入您之前替换的密码$ password。退出数据库会话：</p>
+<pre><code class="bash">\q
+</code></pre>
+
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="redis"><a name="user-content-redis" href="#redis" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Redis</h4>
+<p>GitLab至少需要Redis 2.8.</p>
+<ol>
+<li>
+<p>删除原有版本Redis：</p>
+<pre><code class="bash">yum remove redis
+</code></pre>
+
+</li>
+<li>
+<p>从Remide的RPM存储库安装最新版本：</p>
+<pre><code class="bash">yum --enablerepo=remi,remi-test install redis
+</code></pre>
+
+</li>
+<li>
+<p>确保启动时启动Redis：</p>
+<pre><code class="bash">chkconfig redis on
+</code></pre>
+
+</li>
+<li>
+<p>配置Redis以使用套接字：</p>
+<pre><code class="bash">cp /etc/redis.conf /etc/redis.conf.orig
+</code></pre>
+
+</li>
+<li>
+<p>通过将“端口”设置为0，禁用Redis监听TCP</p>
+<pre><code class="bash">sed 's/^port .*/port 0/' /etc/redis.conf.orig | sudo tee /etc/redis.conf
+</code></pre>
+
+</li>
+<li>
+<p>启用Redis套接字以进行默认CentOS路径：</p>
+<pre><code class="bash">echo 'unixsocket /var/run/redis/redis.sock' | sudo tee -a /etc/redis.conf
+echo -e 'unixsocketperm 0770' | sudo tee -a /etc/redis.conf
+</code></pre>
+
+</li>
+<li>
+<p>创建包含套接字的目录</p>
+<pre><code class="bash">mkdir /var/run/redis
+chown redis:redis /var/run/redis
+chmod 755 /var/run/redis
+</code></pre>
+
+</li>
+<li>
+<p>如果适用，请保留包含套接字的目录</p>
+<pre><code class="bash">if [ -d /etc/tmpfiles.d ]; then
+    echo 'd  /var/run/redis  0755  redis  redis  10d  -' | sudo tee -a /etc/tmpfiles.d/redis.conf
+fi
+</code></pre>
+
+</li>
+<li>
+<p>激活对redis.conf的更改：</p>
+<p><pre><code class="bash">service redis restart
+</code></pre><br />
+10. 添加git到redis组：</p>
+<pre><code class="bash">usermod -aG redis git
+</code></pre>
+
+</li>
+</ol>
+<h4 id="12-gitlab"><a name="user-content-12-gitlab" href="#12-gitlab" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>12. GitLab</h4>
+<p>使用Git克隆GitLab的最新版本。</p>
+<pre><code>```bash
+# We'll install GitLab into home directory of the user "git"
+cd /home/git
+```
+</code></pre>
+<ol>
+<li>
+<p>克隆来源</p>
+<pre><code class="bash"># Clone GitLab repository
+sudo -u git -H git clone https://gitlab.com/gitlab-org/gitlab-ce.git -b 8-9-stable gitlab
+</code></pre>
+
+</li>
+<li>
+<p>配置GitLab</p>
+<pre><code class="bash"># Go to GitLab installation folder
+cd /home/git/gitlab
+
+# Copy the example GitLab config
+sudo -u git -H cp config/gitlab.yml.example config/gitlab.yml
+
+# Update GitLab config file, follow the directions at top of file
+sudo -u git -H editor config/gitlab.yml
+
+# Copy the example secrets file
+sudo -u git -H cp config/secrets.yml.example config/secrets.yml
+sudo -u git -H chmod 0600 config/secrets.yml
+
+# Make sure GitLab can write to the log/ and tmp/ directories
+sudo chown -R git log/
+sudo chown -R git tmp/
+sudo chmod -R u+rwX,go-w log/
+sudo chmod -R u+rwX tmp/
+
+# Make sure GitLab can write to the tmp/pids/ and tmp/sockets/ directories
+sudo chmod -R u+rwX tmp/pids/
+sudo chmod -R u+rwX tmp/sockets/
+
+# Create the public/uploads/ directory
+sudo -u git -H mkdir public/uploads/
+
+# Make sure only the GitLab user has access to the public/uploads/ directory
+# now that files in public/uploads are served by gitlab-workhorse
+sudo chmod 0700 public/uploads
+
+sudo chmod ug+rwX,o-rwx /home/git/repositories/
+
+# Change the permissions of the directory where CI build traces are stored
+sudo chmod -R u+rwX builds/
+
+# Change the permissions of the directory where CI artifacts are stored
+sudo chmod -R u+rwX shared/artifacts/
+
+# Copy the example Unicorn config
+sudo -u git -H cp config/unicorn.rb.example config/unicorn.rb
+
+# Find number of cores
+nproc
+
+# Enable cluster mode if you expect to have a high load instance
+# Ex. change amount of workers to 3 for 2GB RAM server
+# Set the number of workers to at least the number of cores
+sudo -u git -H editor config/unicorn.rb
+
+# Copy the example Rack attack config
+sudo -u git -H cp config/initializers/rack_attack.rb.example config/initializers/rack_attack.rb
+
+# Configure Git global settings for git user
+# 'autocrlf' is needed for the web editor
+sudo -u git -H git config --global core.autocrlf input
+
+# Disable 'git gc --auto' because GitLab already runs 'git gc' when needed
+sudo -u git -H git config --global gc.auto 0
+
+# Configure Redis connection settings
+sudo -u git -H cp config/resque.yml.example config/resque.yml
+
+# Change the Redis socket path if you are not using the default CentOS  configuration
+sudo -u git -H editor config/resque.yml
+</code></pre>
+
+<p><strong> 请确保同时编辑 gitlab.yml和unicorn.rb匹配您的设置。</strong></p>
+<p><strong> 如果要使用HTTPS，请<img alt="参阅使用HTTPS" src="https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md#using-https" />进行其他步骤。</strong></p>
+</li>
+<li>
+<p>配置GitLab数据库设置：</p>
+<pre><code class="bash"># PostgreSQL only:
+sudo -u git cp config/database.yml.postgresql config/database.yml
+
+# MySQL only:
+sudo -u git cp config/database.yml.mysql config/database.yml
+
+# MySQL and remote PostgreSQL only:
+# Update username/password in config/database.yml.
+# You only need to adapt the production settings (first part).
+# If you followed the database guide then please do as follows:
+# Change 'secure password' with the value you have given to $password
+# You can keep the double quotes around the password
+sudo -u git -H editor config/database.yml
+
+# PostgreSQL and MySQL:
+# Make config/database.yml readable to git only
+sudo -u git -H chmod o-rwx config/database.y
+</code></pre>
+
+</li>
+</ol>
+<h4 id="13-gems"><a name="user-content-13-gems" href="#13-gems" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>13. 安装 Gems</h4>
+<p>从1.5.2开始，您可以调用bundle install -jN（N为处理器内核的数量），来加速Gems的安装，安装完成时间会有显著的差异（约60%）。</p>
+<p>使用nproc命令检查你的核心数量。同时确保bundle版本为1.5.2以上（run bundle -v）。</p>
+<pre><code class="bash">cd /home/git/gitlab
+
+# For PostgreSQL (note, the option says &quot;without ... mysql&quot;)
+sudo -u git -H bundle config build.pg --with-pg-config=/usr/pgsql-9.3/bin/pg_config
+sudo -u git -H bundle install --deployment --without development test mysql aws kerberos
+
+# Or for MySQL (note, the option says &quot;without ... postgres&quot;)
+sudo -u git -H bundle install --deployment --without development test postgres aws kerberos
+</code></pre>
+
+<p>注意：如果要使用Kerberos进行用户身份验证，请kerberos 在上述&ndash;without选项中省略。</p>
+<h4 id="14-gitlab-shell"><a name="user-content-14-gitlab-shell" href="#14-gitlab-shell" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>14. 安装GitLab shell</h4>
+<p>GitLab Shell是专门为GitLab开发的SSH访问和存储库管理软件.</p>
+<pre><code class="bash"># Run the installation task for gitlab-shell (replace `REDIS_URL` if needed):
+sudo -u git -H bundle exec rake gitlab:shell:install[v3.0.0] REDIS_URL=unix:/var/run/redis/redis.sock RAILS_ENV=production
+
+# By default, the gitlab-shell config is generated from your main GitLab config.
+# You can review (and modify) the gitlab-shell config as follows:
+sudo -u git -H editor /home/git/gitlab-shell/config.yml
+
+# Ensure the correct SELinux contexts are set
+# Read http://wiki.centos.org/HowTos/Network/SecuringSSH
+restorecon -Rv /home/git/.ssh
+</code></pre>
+
+<p>注意：确保您的主机名可以通过正确的DNS记录或 /etc/hosts（“127.0.0.1 hostname”）中的附加行在本机上的解析。</p>
+<h4 id="15-gitlab-workhorse"><a name="user-content-15-gitlab-workhorse" href="#15-gitlab-workhorse" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>15. 安装gitlab-workhorse</h4>
+<pre><code class="bash">cd /home/git
+sudo -u git -H git clone https://gitlab.com/gitlab-org/gitlab-workhorse.git
+cd gitlab-workhorse
+sudo -u git -H git checkout v0.7.5
+sudo -u git -H make
+</code></pre>
+
+<h4 id="16"><a name="user-content-16" href="#16" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>16. 初始化数据库并激活高级功能</h4>
+<pre><code class="bash"># Go to GitLab installation folder
+
+cd /home/git/gitlab
+
+sudo -u git -H bundle exec rake gitlab:setup RAILS_ENV=production
+
+# Type 'yes' to create the database tables.
+
+# When done you see 'Administrator account created:'
+</code></pre>
+
+<p>您可以通过修改环境变量，来设置管理员 /root 密码跟电子邮件，GITLAB_ROOT_PASSWORD并 GITLAB_ROOT_EMAIL分别如下所示。</p>
+<pre><code class="bash">sudo -u git -H bundle exec rake gitlab:setup RAILS_ENV=production GITLAB_ROOT_PASSWORD=yourpassword GITLAB_ROOT_EMAIL=youremail
+</code></pre>
+
+<p>如果没有设置密码（或者重置成默认密码），等待GitLab安装完成后，公布到公共网络，在首次登陆服务器后，将强制要求更改默认密码。</p>
+<h4 id="17-secrettsyml"><a name="user-content-17-secrettsyml" href="#17-secrettsyml" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>17. 安全的secretts.yml</h4>
+<p>该secrets.yml文件存储会话和安全变量的加密密钥。备份在secrets.yml某个地方安全，但不要将其存储在与数据库备份相同的位置。否则，如果您的一个备份被泄露，您的秘密将被暴露。</p>
+<h4 id="18-init"><a name="user-content-18-init" href="#18-init" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>18. 安装Init 脚本</h4>
+<ol>
+<li>拷贝init脚本（一般是/etc/init.d/gitlab）：</li>
+</ol>
+<pre><code class="bash">cp lib/support/init.d/gitlab /etc/init.d/gitlab
+</code></pre>
+
+<ol>
+<li>如果您使用非默认文件夹或用户副本进行安装，请编辑默认文件：</li>
+</ol>
+<pre><code class="bash">cp lib/support/init.d/gitlab.default.example /etc/default/gitlab
+</code></pre>
+
+<ol>
+<li>
+<p>如果您将GitLab安装在另一个目录或默认用户之外，您应该更改这些设置/etc/default/gitlab。不要编辑，/etc/init.d/gitlab将在升级时更改。</p>
+</li>
+<li>
+<p>使GitLab启动时启动：</p>
+</li>
+</ol>
+<pre><code class="bash">chkconfig gitlab on
+</code></pre>
+
+<h4 id="19-logrotate"><a name="user-content-19-logrotate" href="#19-logrotate" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>19. 设置 logrotate</h4>
+<pre><code class="bash">cp lib/support/logrotate/gitlab /etc/logrotate.d/gitlab
+</code></pre>
+
+<h4 id="20"><a name="user-content-20" href="#20" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>20. 检查申请状态</h4>
+<p>检查GitLab及其环境是否正确配置：</p>
+<pre><code class="bash">sudo -u git -H bundle exec rake gitlab:env:info RAILS_ENV=production
+</code></pre>
+
+<h4 id="21"><a name="user-content-21" href="#21" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>21. 编译</h4>
+<pre><code class="bash">sudo -u git -H bundle exec rake assets:precompile RAILS_ENV=production
+</code></pre>
+
+<h4 id="22-gitlab"><a name="user-content-22-gitlab" href="#22-gitlab" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>22. 启动 GitLab 实例</h4>
+<pre><code class="bash">service gitlab start
+</code></pre>
+
+<h4 id="23-web"><a name="user-content-23-web" href="#23-web" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>23. 配置Web服务器</h4>
+<p>使用Nginx 或者 Apache ，官方安装指南推荐使用Nginx.</p>
+<ol>
+<li>
+<p>Nginx</p>
+<ol>
+<li>
+<p>安装</p>
+<p>你需要的nginx的新版本，否则安装过程中你可能会遇到问题。为此，请按照nginx wiki提供的说明进行安装nginx：</p>
+<pre><code class="bash">yum update
+yum -y install nginx
+chkconfig nginx on
+</code></pre>
+
+</li>
+<li>
+<p>站点配置</p>
+<pre><code class="bash">cp lib/support/nginx/gitlab /etc/nginx/conf.d/gitlab.conf
+</code></pre>
+
+</li>
+<li>
+<p>确保编辑配置文件以匹配您的设置：</p>
+<pre><code class="bash"># Change YOUR_SERVER_FQDN to the fully-qualified
+# domain name of your host serving GitLab.
+</code></pre>
+
+<p>注意：如果要使用HTTPS，请用gitlabNginx配置替换gitlab-ssl。请参阅使用HTTPS进行HTTPS配置的详细信息。</p>
+</li>
+<li>
+<p>将nginx用户添加到git组中：</p>
+<pre><code class="bash">usermod -a -G git nginx
+chmod g+rx /home/git/
+</code></pre>
+
+</li>
+<li>
+<p>测试配置</p>
+<p>使用以下命令验证您的gitlab或gitlab-sslNginx配置文件：</p>
+<pre><code class="bash">nginx -t
+</code></pre>
+
+<p>您应该收到syntax is okay和test is successful消息。如果您收到错误检查gitlab或gitlab-sslNginx的配置文件错别字等，在给出的错误信息indiciated。</p>
+</li>
+<li>
+<p>重启nginx服务</p>
+<pre><code class="bash">service nginx restart
+</code></pre>
+
+</li>
+</ol>
+</li>
+<li>
+<p>Apache</p>
+<p>根据Httpd可以配置有或没有SSL支持。请在后续步骤中选择适当的命令。</p>
+<ul>
+<li>
+<p>GitLab-workhorse</p>
+<p>Apache安装需要更改gitlab-workhorse配置。更改 gitlab_workhorse_options在/etc/default/gitlab以下几点：</p>
+<pre><code class="bash">gitlab_workhorse_options=&quot;-listenUmask 0 -listenNetwork tcp -listenAddr 127.0.0.1:8181 -authBackend http://127.0.0.1:8080&quot;
+</code></pre>
+
+<p>并重启：</p>
+<pre><code class="bash">service gitlab restart
+</code></pre>
+
+</li>
+<li>
+<p>HTTPS</p>
+<p>我们将使用模块配置apache，该模块mod_proxy在安装apache时默认加载，并mod_ssl提供ssl支持：</p>
+<pre><code class="bash">yum -y install httpd mod_ssl
+chkconfig httpd on
+wget -O /etc/httpd/conf.d/gitlab.conf https://gitlab.com/gitlab-org/gitlab-recipes/raw/master/web-server/apache/gitlab-ssl-apache22.conf
+mv /etc/httpd/conf.d/ssl.conf{,.bak}
+sed -i 's/logs\///g' /etc/httpd/conf.d/gitlab.conf
+</code></pre>
+
+<p><strong> 用您的编辑器打开/etc/httpd/conf.d/gitlab.conf，并将YOUR_SERVER_FQDN用您的FQDN 替换。同时还要确保证书的路径有效。</strong></p>
+<p>添加LoadModule ssl_module /etc/httpd/modules/mod_ssl.so在/etc/httpd/conf/httpd.conf。</p>
+</li>
+<li>
+<p>HTTP</p>
+<p>我们将mod_proxy作为在安装apache时，使用的默认情况下加载的模块配置：</p>
+<pre><code class="bash">yum -y install httpd
+chkconfig httpd on
+wget -O /etc/httpd/conf.d/gitlab.conf https://gitlab.com/gitlab-org/gitlab-recipes/raw/master/web-server/apache/gitlab-apache22.conf
+sed -i 's/logs\///g' /etc/httpd/conf.d/gitlab.conf
+</code></pre>
+
+<p>将/etc/httpd/conf.d/gitlab.conf用您的编辑器打开，并YOUR_SERVER_FQDN用您的FQDN 替换。</p>
+</li>
+<li>
+<p>SELinux的</p>
+<p>要配置SELinux，请阅读README中的SELinux修改部分。</p>
+<p>最后，启动apache：</p>
+<pre><code class="bash">service httpd start
+</code></pre>
+
+<p>注意： 如果要在同一系统上运行其他网站，则需要添加/etc/httpd/conf/httpd.conf：</p>
+<pre><code>NameVirtualHost *:80
+&lt;IfModule mod_ssl.c&gt;
+    # If you add NameVirtualHost *:443 here, you will also have to change
+    # the VirtualHost statement in /etc/httpd/conf.d/gitlab.conf
+    # to &lt;VirtualHost *:443&gt;
+ NameVirtualHost *:443
+    Listen 443
+&lt;/IfModule&gt;
+</code></pre>
+
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="24"><a name="user-content-24" href="#24" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>24. 配置防火墙</h4>
+<p>打开一个iptables端口，以便用户可以访问Web服务器（http和https端口）和 ssh.</p>
+<pre><code class="bash">lokkit -s http -s https -s ssh
+</code></pre>
+
+<p>重启防火墙以便使其生效：</p>
+<pre><code class="bash">service iptables restart
+</code></pre>
+
+<h4 id="25"><a name="user-content-25" href="#25" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>25. 完成配置</h4>
+<ol>
+<li>
+<p>检查应用程序状态</p>
+<pre><code class="bash">cd /home/git/gitlab
+sudo -u git -H bundle exec rake gitlab:check RAILS_ENV=production
+</code></pre>
+
+<p>如果所有项目都是绿色的，那么恭喜您成功安装GitLab！</p>
+<p>注意：提供SANITIZE=true环境变量以gitlab:check从检查命令的输出中省略项目名称。<br />
+2. 初次登陆</p>
+<p>如果您在安装过程中没有提供root密码，那么您将被重定向到密码重置屏幕，以提供初始管理员帐户的密码。输入您想要的密码，您将被重定向回登录屏幕。</p>
+<p>默认帐户的用户名是root。提供您之前创建的密码并登录。登录后，您可以更改用户名。</p>
+</li>
+</ol>
+<p><span id="jump_6"></span></p>
+<h2 id="git_5"><a name="user-content-git_5" href="#git_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>自定义 <strong><em>Git</em></strong></h2>
+<h3 id="git_6"><a name="user-content-git_6" href="#git_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Git 显示颜色</h3>
+<pre><code class="bash">git config --global color.ui true
+</code></pre>
+
+<p>这样，Git会适当地显示不同的颜色，比如git status命令：</p>
+<h3 id="_18"><a name="user-content-_18" href="#_18" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>忽略特殊文件</h3>
+<ul>
+<li>
+<p>有些时候，你必须把某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件啦，等等，每次git status都会显示Untracked files &hellip;，有强迫症的童鞋心里肯定不爽。</p>
+</li>
+<li>
+<p>好在Git考虑到了大家的感受，这个问题解决起来也很简单，在Git工作区的根目录下创建一个特殊的.gitignore文件，然后把要忽略的文件名填进去，Git就会自动忽略这些文件。</p>
+</li>
+<li>
+<p>不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。所有配置文件可以直接在线浏览：<a href="https://github.com/github/gitignore">https://github.com/github/gitignore</a></p>
+<p>忽略文件的原则是：</p>
+<ol>
+<li>
+<p>忽略操作系统自动生成的文件，比如缩略图等；</p>
+</li>
+<li>
+<p>忽略编译生成的中间文件、可执行文件等，也就是如果一个文件是通过另一个文件自动生成的，那自动生成的文件就没必要放进版本库，比如Java编译产生的.class文件；</p>
+</li>
+<li>
+<p>忽略你自己的带有敏感信息的配置文件，比如存放口令的配置文件</p>
+</li>
+</ol>
+<p>举个例子：</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>假设你在Windows下进行Python开发，Windows会自动在有图片的目录下生成隐藏的缩略图文件，如果有自定义目录，目录下就会有Desktop.ini文件，因此你需要忽略Windows自动生成的垃圾文件：</p>
+<pre><code class="Python"># Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+</code></pre>
+
+</li>
+<li>
+<p>然后，继续忽略Python编译产生的.pyc、.pyo、dist等文件或目录：</p>
+<pre><code class="Python"># Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+</code></pre>
+
+</li>
+<li>
+<p>加上你自己定义的文件，最终得到一个完整的.gitignore文件，内容如下：</p>
+<pre><code class="gitignore"># Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+# My configurations:
+db.ini
+deploy_key_rsa
+</code></pre>
+
+</li>
+<li>
+<p>最后一步就是把.gitignore也提交到Git，就完成了！当然检验.gitignore的标准是git status命令是不是说working directory clean。</p>
+<p><strong> 使用Windows的童鞋注意了，如果你在资源管理器里新建一个.gitignore文件，它会非常弱智地提示你必须输入文件名，但是在文本编辑器里“保存”或者“另存为”就可以把文件保存为.gitignore了。</strong></p>
+</li>
+<li>
+<p>有些时候，你想添加一个文件到Git，但发现添加不了，原因是这个文件被.gitignore忽略了：</p>
+<pre><code class="bash">$ git add App.class
+The following paths are ignored by one of your .gitignore files:
+App.class
+Use -f if you really want to add them.
+</code></pre>
+
+</li>
+<li>
+<p>如果你确实想添加该文件，可以用-f强制添加到Git：</p>
+<pre><code class="bash">$ git add -f App.class
+</code></pre>
+
+</li>
+<li>
+<p>或者你发现，可能是.gitignore写得有问题，需要找出来到底哪个规则写错了，可以用git check-ignore命令检查：</p>
+<pre><code class="bash">$ git check-ignore -v App.class
+.gitignore:3:*.class    App.class
+</code></pre>
+
+<p>Git会告诉我们，.gitignore的第3行规则忽略了该文件，于是我们就可以知道应该修订哪个规则。</p>
+</li>
+</ol>
+<h3 id="_19"><a name="user-content-_19" href="#_19" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>配置别名</h3>
+<p>有没有经常敲错命令？比如git status？status这个单词真心不好记。<br />
+如果敲git st就表示git status那就简单多了，当然这种偷懒的办法我们是极力赞成的。</p>
+<p>我们只需要敲一行命令，告诉Git，以后st就表示status：</p>
+<pre><code class="bash">$ git config --global alias.st status
+</code></pre>
+
+<p>好了，现在敲git st看看效果。</p>
+<p>当然还有别的命令可以简写，很多人都用co表示checkout，ci表示commit，br表示branch：</p>
+<pre><code class="bash">$ git config --global alias.co checkout
+$ git config --global alias.ci commit
+$ git config --global alias.br branch
+</code></pre>
+
+<p>以后提交就可以简写成：</p>
+<pre><code class="bash">$ git ci -m &quot;bala bala bala...&quot;
+</code></pre>
+
+<p><strong> &ndash;global参数是全局参数，也就是这些命令在这台电脑的所有Git仓库下都有用。</strong></p>
+<p>在撤销修改一节中，我们知道，命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区。既然是一个unstage操作，就可以配置一个unstage别名：</p>
+<p><pre><code class="bash">$ git config --global alias.unstage 'reset HEAD'
+</code></pre><br />
+当你敲入命令：</p>
+<pre><code class="bash">$ git unstage test.py
+</code></pre>
+
+<p>实际上Git执行的是：</p>
+<pre><code class="bash">$ git reset HEAD test.py
+</code></pre>
+
+<p>配置一个git last，让其显示最后一次提交信息：</p>
+<pre><code class="bash">$ git config --global alias.last 'log -1'
+</code></pre>
+
+<p>这样，用git last就能显示最近一次的提交：</p>
+<pre><code class="bash">$ git last
+commit adca45d317e6d8a4b23f9811c3d7b7f0f180bfe2
+Merge: bd6ae48 291bea8
+Author: Michael Liao &lt;askxuefeng@gmail.com&gt;
+Date:   Thu Aug 22 22:49:22 2013 +0800
+
+    merge &amp; fix hello.py
+</code></pre>
+
+<p>甚至还有人丧心病狂地把lg配置成了：</p>
+<pre><code class="bash">git config --global alias.lg &quot;log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit&quot;
+</code></pre>
+
+<p>来看看git lg的效果：</p>
+<p><img alt="git lg" src="https://www.liaoxuefeng.com/files/attachments/00138492662982594cbd1a942114472aeeb5f0a502faed1000/0" /></p>
+<h3 id="_20"><a name="user-content-_20" href="#_20" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>配置文件</h3>
+<p>配置Git的时候，加上&ndash;global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用。</p>
+<p>配置文件放哪了？每个仓库的Git配置文件都放在.git/config文件中：</p>
+<pre><code class="bash">$ cat .git/config 
+[core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
+    ignorecase = true
+    precomposeunicode = true
+[remote &quot;origin&quot;]
+    url = git@github.com:michaelliao/learngit.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[branch &quot;master&quot;]
+    remote = origin
+    merge = refs/heads/master
+[alias]
+    last = log -1
+</code></pre>
+
+<p>别名就在[alias]后面，要删除别名，直接把对应的行删掉即可。</p>
+<p>而当前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中：</p>
+<pre><code class="bash">$ cat .gitconfig
+[alias]
+    co = checkout
+    ci = commit
+    br = branch
+    st = status
+[user]
+    name = Your Name
+    email = your@email.com
+</code></pre>
+
+<p>参考文章：</p>
+<p>廖雪峰Git教程： <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000"><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000"><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></a></a></p>
+<p>GitLab 官方搭建文档: <a href="https://github.com/gitlabhq/gitlab-recipes/tree/master/install/centos"><a href="https://github.com/gitlabhq/gitlab-recipes/tree/master/install/centos"><a href="https://github.com/gitlabhq/gitlab-recipes/tree/master/install/centos">https://github.com/gitlabhq/gitlab-recipes/tree/master/install/centos</a></a></a></p></article></body></html>

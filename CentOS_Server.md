@@ -34,7 +34,7 @@
 
 * 建立目录代码
 
-```Bash
+```bash
 mkdir -p /usr/local/webserver
 mkdir -p /data
 mkdir -p /rootcp
@@ -43,7 +43,7 @@ mkdir -p /htdocs
 
 * 将原 ***/root*** 文件夹下所有文件复制到 ***/rootcp*** 文件夹下，已备完成 ***/root*** 目录扩容后恢复。
 
-```Bash
+```bash
 cp /root/.* /rootcp
 ```
 
@@ -51,7 +51,7 @@ cp /root/.* /rootcp
 
 * 查看分区。不存在扩展分区的情况跳过扩展文件夹目录
 
-```Bash
+```bash
 fdisk -l
 ```
 
@@ -63,7 +63,7 @@ fdisk -l
 > Disk identifier: 0x00000000
 
 * 创建分区，并格式化。
-```Bash
+```bash
 fidsk /dev/vdb
 ```
 
@@ -114,7 +114,7 @@ fidsk /dev/vdb
 
 * 进行格式化
 
-```Bash
+```bash
 mkfs.ext4 /dev/vdb1
 mkfs.ext4 /dev/vdb2
 mkfs.ext4 /dev/vdb3
@@ -125,7 +125,7 @@ mkfs.ext4 /dev/vdb4
 
 * 自动挂载需要设备 ***UUID*** ，使用指令查询并复制备用。
 
-```Bash
+```bash
 ls -l /dev/disk/by-uuid/
 
 blkid
@@ -133,7 +133,7 @@ blkid
 
 * 编辑系统分区列表
 
-```Bash
+```bash
 vim /etc/fstab
 ```
 
@@ -141,7 +141,7 @@ vim /etc/fstab
 
 * 保存并退出，重启系统
 
-```Bash
+```bash
 shutdown -r now
 ```
 
@@ -149,7 +149,7 @@ shutdown -r now
 
 * 复制 ***/rootcp*** 下文件到 ***/root*** 文件夹下
 
-```Bash
+```bash
 cp /rootcp/.* /root/
 ```
 
@@ -157,7 +157,7 @@ cp /rootcp/.* /root/
 
     * 工程服务器
 
-    ```Bash
+    ```bash
     mkdir -p /htdocs/software
     mkdir -p /htdocs/www
     mkdir -p /usr/local/webserver/website
@@ -167,7 +167,7 @@ cp /rootcp/.* /root/
 
     * 数据库服务器
 
-    ```Bash
+    ```bash
     mkdir -p /htdocs/software
     mkdir -p /htdocs/www
     mkdir -p /usr/local/webserver/mysql
@@ -178,7 +178,7 @@ cp /rootcp/.* /root/
     
     * 添加工程用户用户组
     
-    ```Bash
+    ```bash
     /usr/sbin/groupadd www
     /usr/sbin/useradd -g www www 
     chmod +w /htdocs/www
@@ -191,7 +191,7 @@ cp /rootcp/.* /root/
     
     * 添加数据库用户用户组
     
-    ```Bash
+    ```bash
     /usr/sbin/groupadd mysql
     /usr/sbin/useradd -g mysql mysql
     chmod +w /htdocs/www
@@ -206,7 +206,7 @@ cp /rootcp/.* /root/
 
 ### 5. 安装类库
 
-```Bash
+```bash
 yum -y install gcc cc perl git lua-devel pcre-devel openssl-devel gd-devel \
 gcc-c++ ncurses-devel openssh-server openssh-clients
 ```
@@ -215,13 +215,13 @@ gcc-c++ ncurses-devel openssh-server openssh-clients
 
 ### 6. 更新系统时间
 
-```Bash
+```bash
 ntpdate cn.pool.ntp.org
 ```
 
 ### 7. 重启系统
 
-```Bash
+```bash
 shutdown -r now
 ```
 
@@ -231,7 +231,7 @@ shutdown -r now
 
 * 查找系统集成 ***libevent*** 并删除
 
-```Bash
+```bash
 rpm -qa|grep libevent
 rpm -ql libevent
 rpm -e libevent --nodeps
@@ -240,7 +240,7 @@ rpm -e `rpm -qa|grep libevent` --allmatches --nodeps
 
 * 安装上传到 ***/htdocs/software*** 目录下的源码文件
 
-```Bash
+```bash
 cd /htdocs/software
 tar zxf libevent-2.0.22-stable.tar.gz
 cd libevent-2.0.22-stable
@@ -251,7 +251,7 @@ make && make install
 
 * 安装完成后设置软链接
 
-```Bash
+```bash
 ln -sv /usr/local/webserver/libevent/lib/libevent-2.0.so.5 /usr/lib/libevent-2.0.so.5 
 ln -sv /usr/local/webserver/libevent/lib/libevent-2.0.so.5 /usr/lib64/libevent-2.0.so.5 
 ln -sv /usr/local/webserver/libevent/lib/libevent-2.0.so.5 /lib64/libevent-2.0.so.5 
@@ -264,7 +264,7 @@ ln -sv /usr/local/webserver/libevent/lib/libevent-2.0.so.5 /usr/local/lib/libeve
 
 * 用户最大进程数配置
 
-```Bash
+```bash
 vim /etc/security/limits.d/90-nproc.conf
 
 #Add
@@ -278,14 +278,14 @@ mysql soft nproc unlimited
 
 * 产生 ***core*** 文件
 
-```Bash
+```bash
 ulimit -SHn 65535
 ulimit -c unlimited
 ```
 
 * 修改 ***/etc/profile*** 文件配置
 
-```Bash
+```bash
 vim /etc/sysctl.conf
 
 #Add
@@ -316,7 +316,7 @@ net.ipv4.ip_local_port_range = 1024 65535
 
 ### 1. 安装 ***cmake***
 
-```Bash
+```bash
 cd /htdocs/software
 tar -zxf cmake-2.8.10.2.tar.gz
 cd cmake-2.8.10.2
@@ -326,7 +326,7 @@ make && make install
 
 ### 2. 将 ***cmake*** 永久加入系统环境变量
 
-```Bash
+```bash
 vim /etc/profile
 
 #Add
@@ -342,14 +342,14 @@ echo $PATH
 
 * 创建 ***mysql*** 用户及用户组
 
-```Bash
+```bash
 groupadd mysql
 useradd -r -g mysql mysql
 ```
 
 * 编译安装 ***MySQL***
     
-```Bash
+```bash
 rpm -ivh mysql-community-5.7.18-1.el6.src.rpm
 cd /mysql-5.7.18/SOURCE/
 tar -zxf mysql-5.7.18.tar.gz
@@ -358,7 +358,7 @@ cd mysql-5.7.18
 
 * ***cmake*** 编译 ***MySQL*** 源码参数
 
-```Bash
+```bash
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local/webserver/mysql \
 -DMYSQL_UNIX_ADDR=/usr/local/webserver/mysql/mysql.sock \
 -DDEFAULT_CHARSET=utf8 \
@@ -377,13 +377,13 @@ make && make install
 
 * 等待编译完成后
 
-```Bash
+```bash
 cp /usr/local/webserver/mysql/support-files/my-huge.cnf /etc/my.cnf
 ```
 
 * 编辑 ***my.cnf*** 内容
 
-```Bash
+```bash
 vim /etc/my.cnf
 
 [mysqld]
@@ -406,14 +406,14 @@ log-bin=bin_log
 
 * 创建系统数据库的表
 
-```Bash
+```bash
 cd /usr/local/webserver/mysql
 scripts/mysql_install_db --user=mysql
 ```
 
 * 测试 ***MySQL***
 
-```Bash
+```bash
 /usr/local/webserver/mysql/bin/mysql -uroot msyql
 ```
 
@@ -421,7 +421,7 @@ scripts/mysql_install_db --user=mysql
 
 ### 4. 将 ***mysql*** 加入系统环境变量
 
-```Bash
+```bash
 vim /root/.bash_profile
 
 #PATH=$PATH:$HOME/bin修改为
@@ -435,7 +435,7 @@ chown -R mysql:mysql /usr/lcoal/webserver/mysql/data
 
 ### 5. 将 ***mysql*** 加入到开机启动服务
 
-```Bash
+```bash
 cp /usr/local/webserver/mysql/support-files/mysql.server /etc/init.d/mysql
 
 service mysql start
@@ -448,7 +448,7 @@ chkconfig --list|grep mysql
 
 ### 6. 修改 ***MySQL*** 的root用户的密码以及打开远程连接
 
-```Bash
+```bash
 /usr/local/webserver/mysql/bin/mysql -u root mysql
 mysql> usr mysql;
 mysql> desc user;
@@ -469,7 +469,7 @@ Enter password:
 
 ### 7. 打开Linux防火墙端口，否则无法远程连接。
 
-```Bash
+```bash
 vim /etc/sysconfig/iptables
 
 #在22端口规则链下加入
@@ -485,7 +485,7 @@ vim /etc/sysconfig/iptables
 
 * 设置备份数据库并拷贝原数据库
 
-```Bash
+```bash
 grant replication slave on *.* to root@'192.168.1.2' identified by 'XXXXXX';
 # 这里 192.168.1.2 是 slave-mysql 对应的ip 备份数据库内网ip
 
@@ -496,7 +496,7 @@ unlock tables;
 
 * 修改 ***my.cnf*** 配置
 
-```Bash
+```bash
 [mysqld]
 #唯一值，并不能与副服务器相同
 server-id = 1 
@@ -517,7 +517,7 @@ mysql> show master status;
 
 ### 2. 修改 ***slave*** 从服务器
 
-```Bash
+```bash
 #快照备份还原至从服务器
 mysql> create database [table_name];
 mysql> use [table_name];
@@ -571,7 +571,7 @@ stop slave;
 
 * 安装 ***crontab*** 软件及支持
 
-```Bash
+```bash
 yum install vixie-cron
 yum install crontabs
 ```
@@ -580,7 +580,7 @@ yum install crontabs
     
     * 数据库备份脚本 
 
-    ```Bash
+    ```bash
     
     mkdir -p /data/bak
     vim /root/sqlbakup.sh
@@ -606,7 +606,7 @@ yum install crontabs
 
     * 工程备份脚本 
 
-    ```Bash
+    ```bash
 
     mkdir -p /data/backup
     vim /root/webbakup.sh
@@ -630,7 +630,7 @@ yum install crontabs
 
 * 将脚本添加到 ***crontab*** 服务中
 
-```Bash
+```bash
 crontab -e
 
 #添加一行，root 用户不需要指定执行的用户名
@@ -646,7 +646,7 @@ Chmod +x /root/webbakup.sh
 
 * ***crontab*** 简单说明
 
-```Bash
+```bash
 # Example of job definition:
 # ·---------------------- minute (0-59)
 # |  ·------------------- hour (0-23)
@@ -670,7 +670,7 @@ Chmod +x /root/webbakup.sh
 
 ### 1. 安装 ***JDK***
 
-```Bash
+```bash
 cd /htdocs/software
 tar zxf jdk-7u80-linux-x64.tar.gz
 mv jdk1.7.0_80/ /usr/local/webserver/jdk/
@@ -688,7 +688,7 @@ java -version
 
 ### 2. 安装 ***tomcat***
 
-```Bash
+```bash
 cd /htdocs/software
 tar zxf apache-tomcat-7.0.61.tar.gz
 mv apache-tomcat-7.0.61 /usr/local/webserver/tomcat/
@@ -837,13 +837,13 @@ mkdir -p /data/tomcat/logs/
 
 ### 2. 检查安装时使用的编译工具是否存在
 
-```Bash
+```bash
 gcc -v
 ```
 
 ### 3. 卸载默认的低版本环境及rpm包环境
 
-```Bash
+```bash
 rpm -qa | grep -i httpd
 service httpd stop
 rpm -e httpd --nodeps
@@ -863,20 +863,20 @@ rpm -qa | grep -i php
 
 * 加载 CURL  SSL
 
-```Bash
+```bash
 yum -y install curl-devel
 yum  install  openssl.x86_64 openssl-devel.x86_64 -y
 ```
 
 * 安装libtool.i386
 
-```Bash
+```bash
 yum install libtool
 ```
 
 * 安装libtool-ltdl-devel.i386
 
-```Bash
+```bash
 yum install libtool-ltdl-devel
 ```
 
@@ -884,7 +884,7 @@ yum install libtool-ltdl-devel
 
 * 安装apr 
 
-```Bash
+```bash
 cd /htdocs/software
 tar zxf apr-1.5.2.tar.gz
 cd apr-1.5.2
@@ -895,7 +895,7 @@ make && make install
 
 * 安装apr-util
 
-```Bash
+```bash
 cd /htdocs/software
 tar zxf apr-util-1.5.4
 cd apr-util-1.5.4
@@ -911,7 +911,7 @@ make && make install
 
 * 安装pcre
 
-```Bash
+```bash
 #安装前需要安装
 yum install make gcc gcc-c++ zlib-devel libaio -y
 
@@ -927,7 +927,7 @@ make && make install
 
 * 安装zlib
 
-```Bash
+```bash
 tar zxf zlib-1.2.5.1.tar.gz
 cd zlib-1.2.5
 ./configure --prefix=/usr/local/webserver/zlib
@@ -941,7 +941,7 @@ make && make install
 
 ### 6. 安装 ***apache***
 
-```Bash
+```bash
 tar zxf httpd-2.4.12.tar.gz
 cd httpd-2.4.12
 ./configure --prefix=/usr/local/webserver/apache/ \
@@ -963,7 +963,7 @@ make && make install
 
 ### 7. 将 ***Apache*** 安装为系统服务
 
-```Bash
+```bash
 cp /usr/local/apache/bin/apachectl /etc/init.d/httpd
 vim /etc/init.d/httpd
 
@@ -979,7 +979,7 @@ service httpd start
 
 ### 8. 关闭防火墙service iptables stop，机房服务器联系机房人员开放80端口
 
-```Bash
+```bash
 /sbin/iptable -I INPUT -p tcp --dport 80 -j ACCEPT
 #保存
 /etc/rc.d/init.d/iptables save
@@ -991,7 +991,7 @@ service httpd start
 
 ### 9. ***Apache*** 配置多项目
 
-```Bash
+```bash
 # 基本配置
 User www
 Group www
@@ -1053,7 +1053,7 @@ DucmentRoot "/usr/local/webserver/website/cccddd"
 
 * 安装 ***libxml2***
 
-```Bash
+```bash
 tar zxf libxml2-2.7.8.tar.gz
 cd libxml2-2.7.8
 ./configure --prefix=/usr/local/webserver/libxml2
@@ -1063,7 +1063,7 @@ make && make install
 
 * 安装 ***libmcrypt***
 
-```Bash
+```bash
 tar zxf libmcrypt-2.5.7.tar.gz
 cd libmcrypt-2.5.7
 ./configure --prefix=/usr/local/webserver/libmcrypt
@@ -1073,7 +1073,7 @@ make && make install
 
 * 安装 ***libpng***
 
-```Bash
+```bash
 tar zxf libpng-1.6.17.tar.gz
 cd libpng-1.6.17
 ./configure --prefix=/usr/local/webserver/libpng
@@ -1083,7 +1083,7 @@ make && make install
 
 * 安装 ***jpeg8***
 
-```Bash
+```bash
 tar zxf jpegsrc.v8c.tar.gz
 cd jpeg-8
 ./configure --prefix=/usr/local/webserver/jpeg8 --enable-shared --enable-static
@@ -1093,7 +1093,7 @@ make && make install
 
 * 安装 ***freetype***
 
-```Bash
+```bash
 tar zxf freetype-2.4.0.tar.gz
 cd freetype-2.4.0/builds/unix
 mkdir -p /usr/local/webserver/freetype
@@ -1104,7 +1104,7 @@ make && make install
 
 * 安装 ***autoconf***
 
-```Bash
+```bash
 tar zxf autoconf-2.10.tar.gz
 cd autoconf-2.10
 ./configure
@@ -1113,7 +1113,7 @@ make && make install
 
 * 安装 ***GD*** 库文件
 
-```Bash
+```bash
 tar zxf libgd-gd-libgd-9f0a7e7f4f0f.tar.gz
 cd libgd-gd-libgd-9f0a7e7f4f0f
 cmake .
@@ -1122,7 +1122,7 @@ make && make install
 
 ### 3. 安装 ***Php***
 
-```Bash
+```bash
 tar zxf php-5.6.9.tar.gz
 cd php-5.6.9
 mkdir -p /usr/local/webserver/php
@@ -1150,7 +1150,7 @@ service httpd restart
 
 ### 4. 测试 ***Php***
 
-```Bash
+```bash
 vim /usr/lcoal/webserver/website/test.php
 
 <?php
@@ -1165,7 +1165,7 @@ phpinfo();
 
 ### 1. ***nginx*** 安装及配置
 
-```Bash
+```bash
 chmod +w /data/logs
 chown -R www:www /data/logs
 
@@ -1225,7 +1225,7 @@ cd /usr/local/webserver/nginx1.8.1
 
 ### 1. 安装 ***memcached***
 
-```Bash
+```bash
 cd /htdocs/software
 tar zxvf memcached-1.4.25.tar.gz
 cd memcached-1.4.25
@@ -1236,7 +1236,7 @@ make && make install
 
 ### 2. 启动 ***memecached***
 
-```Bash
+```bash
 /usr/local/webserver/memcached/bin/memcached -d -m 256 -u root -l 192.168.6.44 -p 11211 -c 1024 -p /tmp/memcached.pid
 
 /usr/local/webserver/memcached/bin/memcached -d -m 1024 -u root -p 11211 -c 1024 -p /tmp/memcached.pid
@@ -1244,7 +1244,7 @@ make && make install
 
 ### 3. 安装 ***fastdfs***
 
-```Bash
+```bash
 cd /htdocs/software
 tar zxf libfastcommon-1.0.7.tar.gz
 cd libfastcommon-1.0.7
