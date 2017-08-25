@@ -1,0 +1,2365 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  max-width: 980px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 45px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>CentOS_Server</title></head><body><article class="markdown-body"><h1 id="centos-65-x64"><a name="user-content-centos-65-x64" href="#centos-65-x64" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>基于 <strong><em>CentOS</em></strong> 6.5 x64 服务器搭建</h1>
+<table>
+<thead>
+<tr>
+<th align="center">No.</th>
+<th align="center">Contect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="#jump_1">1</a></td>
+<td align="center">总体运行环境搭建与优化</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_2">2</a></td>
+<td align="center">数据库服务器搭建</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_3">3</a></td>
+<td align="center">主从热备、冷备</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_4">4</a></td>
+<td align="center">Tomcat服务器搭建</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_5">5</a></td>
+<td align="center">Apache服务器搭建</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_6">6</a></td>
+<td align="center">php环境搭建</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_7">7</a></td>
+<td align="center">nginx环境搭建</td>
+</tr>
+<tr>
+<td align="center"><a href="#jump_8">8</a></td>
+<td align="center">负载均衡配置</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>基于 <strong><em>CentOS</em></strong> 6.5 x64系统，所用源码版本根据需求选择版本下载。</p>
+</li>
+<li>
+<p>根据项目需求，选择搭建 <strong><em>Nginx+Tomcat+MySQL</em></strong>,<strong><em>Nginx+MySQL+Php</em></strong>,<strong><em>Apache+MySQL+Php</em></strong>环境</p>
+</li>
+</ul>
+<p><span id="jump_1"></span></p>
+<h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>总体运行环境搭建与优化</h2>
+<h3 id="1-centos-65-x64"><a name="user-content-1-centos-65-x64" href="#1-centos-65-x64" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 安装 <strong><em>CentOS</em></strong> 6.5 x64位操作系统，可以选择完整开发包。</h3>
+<h3 id="2"><a name="user-content-2" href="#2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. 新建文件夹为目录扩容做准备</h3>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>文件目录</strong></th>
+<th align="left"><strong>目录功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">/usr/local/webserver</td>
+<td align="left">工程及相关环境目录</td>
+</tr>
+<tr>
+<td align="left">/data</td>
+<td align="left">数据及log文件、备份保存目录</td>
+</tr>
+<tr>
+<td align="left">/rootcp</td>
+<td align="left">暂时保存root目录下文件</td>
+</tr>
+<tr>
+<td align="left">/htdocs/software</td>
+<td align="left">保留上传安装文件</td>
+</tr>
+<tr>
+<td align="left">/htdocs/www</td>
+<td align="left">保留上传项目工程</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<ul>
+<li>建立目录代码</li>
+</ul>
+<pre><code class="bash">mkdir -p /usr/local/webserver
+mkdir -p /data
+mkdir -p /rootcp
+mkdir -p /htdocs
+</code></pre>
+
+<ul>
+<li>将原 <strong><em>/root</em></strong> 文件夹下所有文件复制到 <strong><em>/rootcp</em></strong> 文件夹下，已备完成 <strong><em>/root</em></strong> 目录扩容后恢复。</li>
+</ul>
+<pre><code class="bash">cp /root/.* /rootcp
+</code></pre>
+
+<h3 id="3"><a name="user-content-3" href="#3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. 弹性云存贮分区，并挂载扩展文件夹</h3>
+<ul>
+<li>查看分区。不存在扩展分区的情况跳过扩展文件夹目录</li>
+</ul>
+<pre><code class="bash">fdisk -l
+</code></pre>
+
+<blockquote>
+<p>Disk <strong><em>/dev/vdb</em></strong>: 1073.7 GB, 1073741824000 bytes<br />
+16 heads, 63 sectors/track, 2080507 cylinders<br />
+Units = cylinders of 1008 * 512 = 516096 bytes<br />
+Sector size (logical/physical): 512 bytes / 512 bytes<br />
+I/O size (minimum/optimal): 512 bytes / 512 bytes<br />
+Disk identifier: 0x00000000</p>
+</blockquote>
+<ul>
+<li>创建分区，并格式化。<br />
+<pre><code class="bash">fidsk /dev/vdb
+</code></pre></li>
+</ul>
+<blockquote>
+<p>Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel<br />
+Building a new DOS disklabel with disk identifier 0x5ac15d55.<br />
+Changes will remain in memory only, until you decide to write them.<br />
+After that, of course, the previous content won&rsquo;t be recoverable.</p>
+<p>Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)</p>
+<p>WARNING: DOS-compatible mode is deprecated. It&rsquo;s strongly recommended to<br />
+        switch off the mode (command &lsquo;c&rsquo;) and change display units to<br />
+        sectors (command &lsquo;u&rsquo;).</p>
+<p>Command (m for help): </p>
+</blockquote>
+<ul>
+<li>n 创建分区 d 删除分区 在出现 Command 后直接输入d或n即可。</li>
+</ul>
+<blockquote>
+<p>Command (m for help): n<br />
+Command action<br />
+ e   extended<br />
+ p   primary partition (1-4)</p>
+</blockquote>
+<ul>
+<li>输入 p 并选择分区（1-4）中的某一项。</li>
+</ul>
+<blockquote>
+<p>p<br />
+Partition number (1-4): 1</p>
+</blockquote>
+<ul>
+<li>选择分区大小。</li>
+</ul>
+<blockquote>
+<p>First cylinder (1-2080507, default 1): </p>
+<blockquote>
+<p>1T: <br />
+520126<br />
+1040253<br />
+1560380</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>
+<p>输入w保存所做设置，并等待设置完成生效。</p>
+</li>
+<li>
+<p>完成后使用 <strong><em>fdisk -l</em></strong> 命令查看结果。</p>
+</li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">Device Boot</th>
+<th align="center">Start</th>
+<th align="center">End</th>
+<th align="center">Blocks</th>
+<th align="center">Id</th>
+<th align="center">System</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">/dev/vdb1</td>
+<td align="center"><strong><em>1</em></strong></td>
+<td align="center"><strong><em>520126</em></strong></td>
+<td align="center">262143472+</td>
+<td align="center">83</td>
+<td align="center">Linux</td>
+</tr>
+<tr>
+<td align="center">/dev/vdb2</td>
+<td align="center"><strong><em>520127</em></strong></td>
+<td align="center"><strong><em>1040253</em></strong></td>
+<td align="center">262144008</td>
+<td align="center">83</td>
+<td align="center">Linux</td>
+</tr>
+<tr>
+<td align="center">/dev/vdb3</td>
+<td align="center"><strong><em>1040254</em></strong></td>
+<td align="center"><strong><em>1560380</em></strong></td>
+<td align="center">262144008</td>
+<td align="center">83</td>
+<td align="center">Linux</td>
+</tr>
+<tr>
+<td align="center">/dev/vdb4</td>
+<td align="center"><strong><em>1560381</em></strong></td>
+<td align="center"><strong><em>2080507</em></strong></td>
+<td align="center">262144008</td>
+<td align="center">83</td>
+<td align="center">Linux</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<ul>
+<li>进行格式化</li>
+</ul>
+<pre><code class="bash">mkfs.ext4 /dev/vdb1
+mkfs.ext4 /dev/vdb2
+mkfs.ext4 /dev/vdb3
+mkfs.ext4 /dev/vdb4
+</code></pre>
+
+<h3 id="4"><a name="user-content-4" href="#4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4. 自动挂载设置</h3>
+<ul>
+<li>自动挂载需要设备 <strong><em>UUID</em></strong> ，使用指令查询并复制备用。</li>
+</ul>
+<pre><code class="bash">ls -l /dev/disk/by-uuid/
+
+blkid
+</code></pre>
+
+<ul>
+<li>编辑系统分区列表</li>
+</ul>
+<pre><code class="bash">vim /etc/fstab
+</code></pre>
+
+<ul>
+<li>
+<p>添加格式化后新增加的 <strong><em>UUID</em></strong> 及对应设备</p>
+</li>
+<li>
+<p>保存并退出，重启系统</p>
+</li>
+</ul>
+<pre><code class="bash">shutdown -r now
+</code></pre>
+
+<ul>
+<li>
+<p>重启系统确认挂载成功</p>
+</li>
+<li>
+<p>复制 <strong><em>/rootcp</em></strong> 下文件到 <strong><em>/root</em></strong> 文件夹下</p>
+</li>
+</ul>
+<pre><code class="bash">cp /rootcp/.* /root/
+</code></pre>
+
+<ul>
+<li>
+<p>建立其他目录，及用户用户组,以及赋予权限</p>
+<ul>
+<li>工程服务器</li>
+</ul>
+<pre><code class="bash">mkdir -p /htdocs/software
+mkdir -p /htdocs/www
+mkdir -p /usr/local/webserver/website
+mkdir -p /data/bak
+mkdir -p /data/logs
+</code></pre>
+
+<ul>
+<li>数据库服务器</li>
+</ul>
+<pre><code class="bash">mkdir -p /htdocs/software
+mkdir -p /htdocs/www
+mkdir -p /usr/local/webserver/mysql
+mkdir -p /usr/local/webserver/mysql/data
+mkdir -p /data/bak
+mkdir -p /data/logs
+</code></pre>
+
+<ul>
+<li>添加工程用户用户组</li>
+</ul>
+<pre><code class="bash">/usr/sbin/groupadd www
+/usr/sbin/useradd -g www www 
+chmod +w /htdocs/www
+chown -R www:www /htdocs/www
+chmod +w /data/logs
+chown -R www:www /data/logs
+chmod +w /usr/local/webserver/website
+chown -R www:www /usr/local/webserver/website
+</code></pre>
+
+<ul>
+<li>添加数据库用户用户组</li>
+</ul>
+<pre><code class="bash">/usr/sbin/groupadd mysql
+/usr/sbin/useradd -g mysql mysql
+chmod +w /htdocs/www
+chown -R mysql:mysql /htdocs/www
+chmod +w /data/logs
+chown -R mysql:mysql /data/logs
+chmod +w /usr/local/webserver/mysql
+chown -R mysql:mysql /usr/local/webserver/mysql
+chmod +w /usr/local/webserver/mysql/data
+chown -R mysql:mysql /usr/local/webserver/mysql/data
+</code></pre>
+
+</li>
+</ul>
+<h3 id="5"><a name="user-content-5" href="#5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5. 安装类库</h3>
+<pre><code class="bash">yum -y install gcc cc perl git lua-devel pcre-devel openssl-devel gd-devel \
+gcc-c++ ncurses-devel openssh-server openssh-clients
+</code></pre>
+
+<ul>
+<li>如需要类库特定版本或最新版本需下载源码，进行源码安装。</li>
+</ul>
+<h3 id="6"><a name="user-content-6" href="#6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6. 更新系统时间</h3>
+<pre><code class="bash">ntpdate cn.pool.ntp.org
+</code></pre>
+
+<h3 id="7"><a name="user-content-7" href="#7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7. 重启系统</h3>
+<pre><code class="bash">shutdown -r now
+</code></pre>
+
+<ul>
+<li>因安装openssh,openssl后系统会自动关闭，如是机房服务器需重新联系机房开机。如自行进行重启操作，可避免联系机房人员操作。</li>
+</ul>
+<h3 id="8-libevent"><a name="user-content-8-libevent" href="#8-libevent" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>8. 安装 <strong><em>libevent</em></strong> 类库</h3>
+<ul>
+<li>查找系统集成 <strong><em>libevent</em></strong> 并删除</li>
+</ul>
+<pre><code class="bash">rpm -qa|grep libevent
+rpm -ql libevent
+rpm -e libevent --nodeps
+rpm -e `rpm -qa|grep libevent` --allmatches --nodeps
+</code></pre>
+
+<ul>
+<li>安装上传到 <strong><em>/htdocs/software</em></strong> 目录下的源码文件</li>
+</ul>
+<pre><code class="bash">cd /htdocs/software
+tar zxf libevent-2.0.22-stable.tar.gz
+cd libevent-2.0.22-stable
+mkdir -p /usr/local/webserver/libevent
+./configure --prefix=/usr/local/webserver/libevent
+make &amp;&amp; make install
+</code></pre>
+
+<ul>
+<li>安装完成后设置软链接</li>
+</ul>
+<pre><code class="bash">ln -sv /usr/local/webserver/libevent/lib/libevent-2.0.so.5 /usr/lib/libevent-2.0.so.5 
+ln -sv /usr/local/webserver/libevent/lib/libevent-2.0.so.5 /usr/lib64/libevent-2.0.so.5 
+ln -sv /usr/local/webserver/libevent/lib/libevent-2.0.so.5 /lib64/libevent-2.0.so.5 
+ln -sv /usr/local/webserver/libevent/lib/libevent-2.0.so.5 /lib/libevent-2.0.so.5 
+ln -sv /usr/local/webserver/libevent/lib/libevent-2.0.so.5 /usr/local/lib64/libevent-2.0.so.5 webserver/
+ln -sv /usr/local/webserver/libevent/lib/libevent-2.0.so.5 /usr/local/lib/libevent-2.0.so.5
+</code></pre>
+
+<h3 id="9-linux"><a name="user-content-9-linux" href="#9-linux" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>9. linux 内核优化</h3>
+<ul>
+<li>用户最大进程数配置</li>
+</ul>
+<pre><code class="bash">vim /etc/security/limits.d/90-nproc.conf
+
+#Add
+www hard nproc unlimited
+www soft nproc unlimited
+
+#Add
+mysql hard nproc unlimited
+mysql soft nproc unlimited
+</code></pre>
+
+<ul>
+<li>产生 <strong><em>core</em></strong> 文件</li>
+</ul>
+<pre><code class="bash">ulimit -SHn 65535
+ulimit -c unlimited
+</code></pre>
+
+<ul>
+<li>修改 <strong><em>/etc/profile</em></strong> 文件配置</li>
+</ul>
+<pre><code class="bash">vim /etc/sysctl.conf
+
+#Add
+net.ipv4.tcp_max_syn_backlog = 65536
+net.core.netdev_max_backlog = 32768
+net.core.somaxconn = 32768
+net.core.wmem_default = 8388608
+net.core.rmem_default = 8388608
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.ipv4.tcp_timestamps = 0
+net.ipv4.tcp_synack_retries = 2
+net.ipv4.tcp_syn_retries = 2
+net.ipv4.tcp_tw_recycle = 1
+#net.ipv4.tcp_tw_len = 1
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_mem = 94500000 915000000 927000000
+net.ipv4.tcp_max_orphans = 3276800
+#net.ipv4.tcp_fin_timeout = 30
+#net.ipv4.tcp_keepalive_time = 120
+net.ipv4.ip_local_port_range = 1024 65535
+
+/sbin/sysctl -p
+</code></pre>
+
+<p><span id="jump_2"></span></p>
+<h2 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>数据库服务器搭建</h2>
+<h3 id="1-cmake"><a name="user-content-1-cmake" href="#1-cmake" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 安装 <strong><em>cmake</em></strong></h3>
+<pre><code class="bash">cd /htdocs/software
+tar -zxf cmake-2.8.10.2.tar.gz
+cd cmake-2.8.10.2
+./configure --prefix=/usr/local/webserver/camke
+make &amp;&amp; make install
+</code></pre>
+
+<h3 id="2-cmake"><a name="user-content-2-cmake" href="#2-cmake" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. 将 <strong><em>cmake</em></strong> 永久加入系统环境变量</h3>
+<pre><code class="bash">vim /etc/profile
+
+#Add
+PATH=/usr/local/webserver/cmake/bin:$PATH
+export PATH
+
+source /etc/profile
+
+echo $PATH
+</code></pre>
+
+<h3 id="3-mysql"><a name="user-content-3-mysql" href="#3-mysql" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. 安装 <strong><em>MySQL</em></strong></h3>
+<ul>
+<li>创建 <strong><em>mysql</em></strong> 用户及用户组</li>
+</ul>
+<pre><code class="bash">groupadd mysql
+useradd -r -g mysql mysql
+</code></pre>
+
+<ul>
+<li>编译安装 <strong><em>MySQL</em></strong></li>
+</ul>
+<pre><code class="bash">rpm -ivh mysql-community-5.7.18-1.el6.src.rpm
+cd /mysql-5.7.18/SOURCE/
+tar -zxf mysql-5.7.18.tar.gz
+cd mysql-5.7.18 
+</code></pre>
+
+<ul>
+<li><strong><em>cmake</em></strong> 编译 <strong><em>MySQL</em></strong> 源码参数</li>
+</ul>
+<pre><code class="bash">cmake -DCMAKE_INSTALL_PREFIX=/usr/local/webserver/mysql \
+-DMYSQL_UNIX_ADDR=/usr/local/webserver/mysql/mysql.sock \
+-DDEFAULT_CHARSET=utf8 \
+-DDEFAULT_COLLATION=utf8_general_ci \
+-DWITH_MYISAM_STORAGE_ENGINE=1 \
+-DWITH_INNOBASE_STORAGE_ENGINE=1 \
+-DWITH_MEMORY_STORAGE_ENGINE=1 \
+-DWITH_READLINE=1 \
+-DENABLED_LOCAL_INFILE=1 \
+-DMYSQL_DATADIR=/usr/local/webserver/mysql/data \
+-DMYSQL_USER=mysql \
+-DMYSQL_TCP_PORT=3306
+
+make &amp;&amp; make install
+</code></pre>
+
+<ul>
+<li>等待编译完成后</li>
+</ul>
+<pre><code class="bash">cp /usr/local/webserver/mysql/support-files/my-huge.cnf /etc/my.cnf
+</code></pre>
+
+<ul>
+<li>编辑 <strong><em>my.cnf</em></strong> 内容</li>
+</ul>
+<pre><code class="bash">vim /etc/my.cnf
+
+[mysqld]
+max_allowed_packet = 32M 
+#过小会导致导入数据库SQL时出错
+加入以下参数
+#Add
+lower_case_table_names = 1
+#允许表名小写
+max_connections = 10000
+#最大连接数
+wait_timeout = 31536000
+#连接等待时间
+datadir = /usr/local/webserver/mysql/data
+#指定数据库存放位置
+
+log-bin=bin_log
+
+</code></pre>
+
+<ul>
+<li>创建系统数据库的表</li>
+</ul>
+<pre><code class="bash">cd /usr/local/webserver/mysql
+scripts/mysql_install_db --user=mysql
+</code></pre>
+
+<ul>
+<li>测试 <strong><em>MySQL</em></strong></li>
+</ul>
+<pre><code class="bash">/usr/local/webserver/mysql/bin/mysql -uroot msyql
+</code></pre>
+
+<ul>
+<li>如果提示未发现 <strong><em>mysql.sock</em></strong> ，说明创建系统数据库表时有问题。需要排查 <strong><em>my.cnf</em></strong> 内容。删除/usr/lcoal/webserver/mysql/data/目录下的log与err文件，重新执行创建数据库表。直至测试成功。</li>
+</ul>
+<h3 id="4-mysql"><a name="user-content-4-mysql" href="#4-mysql" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4. 将 <strong><em>mysql</em></strong> 加入系统环境变量</h3>
+<pre><code class="bash">vim /root/.bash_profile
+
+#PATH=$PATH:$HOME/bin修改为
+PATH=$PATH:$HOME/bin:/usr/local/webserver/mysql/bin:/usr/local/webserver/mysql/lib
+
+source /root/.bash_profile
+
+chown -R mysql:mysql /usr/lcoal/webserver/mysql
+chown -R mysql:mysql /usr/lcoal/webserver/mysql/data
+</code></pre>
+
+<h3 id="5-mysql"><a name="user-content-5-mysql" href="#5-mysql" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5. 将 <strong><em>mysql</em></strong> 加入到开机启动服务</h3>
+<pre><code class="bash">cp /usr/local/webserver/mysql/support-files/mysql.server /etc/init.d/mysql
+
+service mysql start
+
+chkconfig --add mysql
+#让mysql服务开机运行
+chkconfig --list|grep mysql
+#查看是否已经添加成功
+</code></pre>
+
+<h3 id="6-mysql-root"><a name="user-content-6-mysql-root" href="#6-mysql-root" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6. 修改 <strong><em>MySQL</em></strong> 的root用户的密码以及打开远程连接</h3>
+<pre><code class="bash">/usr/local/webserver/mysql/bin/mysql -u root mysql
+mysql&gt; usr mysql;
+mysql&gt; desc user;
+mysql&gt; grant all privileges on *.* to root @&quot;%&quot; identified by &quot;XXXXXX&quot;;
+# 为root添加远程连接的能力（XXXXXX为密码）
+mysql&gt; update user set password = password('XXXXXX') where User='root';
+# 设置root用户本地登录密码，非远程登录密码！
+mysql&gt; select host,user,password from user where user='root';
+# 查看root用户权限
+mysql&gt; flush privileges;
+# 必须刷新，否则设置无效
+mysql&gt; exit
+
+#重新登陆
+mysql -uroot -p
+Enter password:
+</code></pre>
+
+<h3 id="7-linux"><a name="user-content-7-linux" href="#7-linux" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7. 打开Linux防火墙端口，否则无法远程连接。</h3>
+<pre><code class="bash">vim /etc/sysconfig/iptables
+
+#在22端口规则链下加入
+-A INPUT -m state NEW -m tcp -p --dport 3306 -j ACCEPT service iptables restart
+</code></pre>
+
+<ul>
+<li>机房服务器内网之间网站服务器与数据库服务器3306访问端口默认开放。如需外网访问数据库，需联系机房人员开放机房3306上行访问端口</li>
+</ul>
+<p><span id="jump_3"></span></p>
+<h2 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>主从热备份与冷备份</h2>
+<h3 id="1-master"><a name="user-content-1-master" href="#1-master" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 热备份  <strong><em>master</em></strong> 主数据库配置</h3>
+<ul>
+<li>设置备份数据库并拷贝原数据库</li>
+</ul>
+<pre><code class="bash">grant replication slave on *.* to root@'192.168.1.2' identified by 'XXXXXX';
+# 这里 192.168.1.2 是 slave-mysql 对应的ip 备份数据库内网ip
+
+flush tables with read lock;
+mysqldump -uroot -pXXXXXX [table_name] &gt; [table_name].sql
+unlock tables;
+</code></pre>
+
+<ul>
+<li>修改 <strong><em>my.cnf</em></strong> 配置</li>
+</ul>
+<pre><code class="bash">[mysqld]
+#唯一值，并不能与副服务器相同
+server-id = 1 
+#日志文件以binary_log为前缀，如果不给log-bin赋值，日志文件将以 master-server-hostname为前缀
+log-bin=bin-log
+#日志文件跳过的数据库（可选属性）
+binlog-ignore-db = mysql,test,information_schema
+#日志文件操作的数据库（可选属性）
+binlog-do-db= [tables_name]
+
+#linux 重启mysql
+/etc/init.d/mysqld restart
+
+mysql&gt; reset master;
+mysql&gt; show master status;
+#查看master_log_file master_log_pos
+</code></pre>
+
+<h3 id="2-slave"><a name="user-content-2-slave" href="#2-slave" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. 修改 <strong><em>slave</em></strong> 从服务器</h3>
+<pre><code class="bash">#快照备份还原至从服务器
+mysql&gt; create database [table_name];
+mysql&gt; use [table_name];
+mysql&gt; source /[table_name].sql
+
+#修改 my.cnf 
+[mysqld]
+#唯一，并与主服务器上的server-id不同。
+server-id=2
+#主服务器的主机名或者ip地址
+#master-host = 192.168.0.104
+#如果主服务器没有在默认的端口上监听，则需确定master-port选项
+#master-port=3306
+#创建的用户名和密码
+#master-user=root
+#master-password=XXXXXX
+#复制操作要针对的数据库（可选，默认为全部）
+replicate-do-db=[table-name]
+#如果主副服务器间连接经常失败，需增加master-retry-count 和 master-connect-retry
+master-retry-count = 999
+#master-connect-retry = 60
+
+/etc/init.d/mysqld restart
+
+mysql&gt; change master to,
+&gt;master_host='192.1658.0.104',
+&gt;master_port=3306,
+&gt;master_user='AffairLog',
+&gt;master_password='password',
+&gt;master_log_file='log.00027',
+&gt;mster_log_pos=3151;
+
+#master_log_file
+#master_log_pos
+#这两个参数在master服务器中，使用show master status 查看
+
+mysql&gt; change master to master_host='192.168.1.2',master_port=3306,master_user='root',
+&gt;master_password='XXXXXX',master_log_file='bin_log.000001',master_log_pos=107;
+
+#如果Slave_IO_State显示waiting for master to send event 的话就表示已经启动了，反之就运行
+start slave;
+
+#在show slave status 的命令输出后，应该包含Slave_IO_Running对应的值为YES。
+stop slave;
+
+</code></pre>
+
+<h3 id="3_1"><a name="user-content-3_1" href="#3_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. 冷备份</h3>
+<blockquote>
+<p>CentOS冷备份基于 <strong><em>crontab</em></strong> 定时进行压缩打包</p>
+</blockquote>
+<ul>
+<li>安装 <strong><em>crontab</em></strong> 软件及支持</li>
+</ul>
+<pre><code class="bash">yum install vixie-cron
+yum install crontabs
+</code></pre>
+
+<ul>
+<li>
+<p>创建备份脚本</p>
+<ul>
+<li>数据库备份脚本 </li>
+</ul>
+<pre><code class="bash">
+mkdir -p /data/bak
+vim /root/sqlbakup.sh
+#备份数据库脚本，在数据库服务器上执行
+
+#!/bin/bash
+#backup database
+
+#################删除备份数据库####################
+rm -f /data/bak/[table_name]_$(date +%Y%m%d --date='7 days ago').sql.gz
+#################备份数据库########################
+mysqldump -uroot -p&quot;XXXXXX&quot; [base_name] | gzip &gt;/data/bak/[base_name]_$(date    +%Y%m%d).sql.gz
+#################导出单个表数据和结构##############
+#mysqldump -u root -p&quot;XXXXXX&quot; [base_name] [table_name]&gt;/data/back/[ table_name]_dump.20170101_0300.sql
+#################还原单个数据库和结构##############
+#mysql -u root -p XXXXXX
+#use [base_name];
+#source /data/bak/[table_name]_dump.20170101_0300.sql
+
+chmod 755 /root/sqlbakup.sh
+
+</code></pre>
+
+<ul>
+<li>工程备份脚本 </li>
+</ul>
+<pre><code class="bash">
+mkdir -p /data/backup
+vim /root/webbakup.sh
+#备份项目脚本，在工程服务器上执行
+
+
+#!/bin/bash
+#backup web
+
+cd /data/backup/
+
+###################删除备份工程####################
+rm -f /data/backup/[web_name]_$(date +%Y%m%d --date='7 days ago').tar.gz
+
+###################备份工程####################
+tar -zcvf /data/backup/[web_name]_$(date +%Y%m%d).tar.gz /usr/local/webserver/website/[web_name]
+
+chmod 755 /root/webbakup.sh
+
+</code></pre>
+
+</li>
+<li>
+<p>将脚本添加到 <strong><em>crontab</em></strong> 服务中</p>
+</li>
+</ul>
+<pre><code class="bash">crontab -e
+
+#添加一行，root 用户不需要指定执行的用户名
+0 3 * * * /root/webbakup.sh
+#数据库服务器同理
+
+Chmod +x /root/webbakup.sh
+#给脚本执行权限
+
+#service crond restart
+
+</code></pre>
+
+<ul>
+<li><strong><em>crontab</em></strong> 简单说明</li>
+</ul>
+<pre><code class="bash"># Example of job definition:
+# ·---------------------- minute (0-59)
+# |  ·------------------- hour (0-23)
+# |  |  ·---------------- day of month(1-31)
+# |  |  |  ·------------- month(1-12)OR jan,feb,mar,apr ...
+# |  |  |  |  ·---------- day of week(0-6)(Sunday=0 or 7) OR 
+# |  |  |  |  |           sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  *  user-name command to be executed
+
+</code></pre>
+
+<blockquote>
+<p>可以发现，crontab的执行周期有5个部分组成，其中第一个是分钟数，第二个是小时数，<br />
+第三个是一个月中的第几天。如果是 * 就表示每天都会调度。</p>
+<p>user-name 部分，如果需要以其他用户调度，则可以指定，否则不能指定。<br />
+比如root用户就不能指定root，否则有调度日志，但是没有实际执行。</p>
+</blockquote>
+<p><span id="jump_4"></span></p>
+<h2 id="tomcat"><a name="user-content-tomcat" href="#tomcat" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Tomcat服务器搭建</h2>
+<h3 id="1-jdk"><a name="user-content-1-jdk" href="#1-jdk" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 安装 <strong><em>JDK</em></strong></h3>
+<pre><code class="bash">cd /htdocs/software
+tar zxf jdk-7u80-linux-x64.tar.gz
+mv jdk1.7.0_80/ /usr/local/webserver/jdk/
+
+#修改系统环境变量
+vim /etc/profile 
+export JAVA_HOME=/usr/local/webserver/jdk
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib:$CLASSPATH
+
+#使其立即生效，并检查是否安装成功
+source /etc/profile
+java -version
+</code></pre>
+
+<h3 id="2-tomcat"><a name="user-content-2-tomcat" href="#2-tomcat" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. 安装 <strong><em>tomcat</em></strong></h3>
+<pre><code class="bash">cd /htdocs/software
+tar zxf apache-tomcat-7.0.61.tar.gz
+mv apache-tomcat-7.0.61 /usr/local/webserver/tomcat/
+
+#运行测试
+/usr/local/webserver/tomcat/bin/startup.sh
+#显示动态日志
+tail -f /usr/local/webserver/tomcat/logs/catalina.out
+#停止
+/usr/local/webserver/tomcat/bin/shutdown.sh
+
+#增加JVM的内存空间（数值根据机器具体配置）
+vim /usr/local/webserver/tomcat/bin/catalina.sh
+#在第二行复制如下参数（适合内存大于等于8GB的服务器）
+JAVA_OPTS=&quot;-server -Xms3g -Xmx3g -Xss256k -Xmn1g -XX:PermSize=1g -XX:MaxPermSize=1g -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+UseFastAccessorMethods -XX:+UseBiasedLocking -XX:+UseCMSCompactAtFullCollection -XX:+UseCMSInitiatingOccupancyOnly -XX:+CMSParallelRemarkEnabled -XX:+CMSClassUnloadingEnabled -XX:CMSFullGCsBeforeCompaction=0 -XX:CMSInitiatingOccupancyFraction=80 -XX:+DisableExplicitGC -XX:+AggressiveOpts -XX:LargePageSizeInBytes=128M -XX:SoftRefLRUPolicyMSPerMB=0 -Djava.awt.headless=true&quot;
+
+CATALINA_OUT=/data/tomcat/logs/catalina.out
+
+#建立文件夹
+mkdir -p /data/tomcat/logs/
+
+</code></pre>
+
+<h3 id="3-serverxml"><a name="user-content-3-serverxml" href="#3-serverxml" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. 修改 <strong><em>server.xml</em></strong> 配置</h3>
+<pre><code class="xml">&lt;!--1. 配置多个项目--&gt;
+&lt;Host name=&quot;localhost&quot;  appBase=&quot;webapps&quot; 
+      unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+    &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+        prefix=&quot;localhost_access_log.&quot; suffix=&quot;.txt&quot;
+        pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+
+        &lt;Context docBase=&quot;uim&quot; path=&quot;&quot; /&gt;
+        &lt;Context docBase=&quot;third&quot; path=&quot;/usr/local/webserver/website/AAA/third&quot; /&gt;
+     &lt;/Host&gt;
+
+&lt;Host name=&quot;www.ycyoes.com&quot;  appBase=&quot;hcode&quot;
+      unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+    &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+        prefix=&quot;localhost_access_log.&quot; suffix=&quot;.txt&quot;
+        pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+
+        &lt;Context docBase=&quot;hcode&quot; path=&quot;&quot; /&gt;
+        &lt;Context docBase=&quot;four&quot; path=&quot;/usr/local/weberver/website/XXX/four&quot; /&gt;
+     &lt;/Host&gt;
+&lt;&lt;!-- 其中name为localhost或者IP或者是域名 --&gt;
+&lt;&lt;!-- appBase为项目所在目录，可为绝对路径或者相对路径 --&gt;
+
+&lt;!--2. 配置域名访问--&gt;
+&lt;!--在host节点输入name属性域名即可--&gt;
+&lt;Host name=&quot;www.aaabbb.com&quot; appBase=&quot;hcode&quot;
+      unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+&lt;!--即可在浏览器中通过http://www.aaabbb.com/appName 进行访问--&gt;
+
+&lt;!--3. 项目名缺省--&gt;
+&lt;!--
+一般的，进行项目访问时需要在url最后输入系统名称，如http://www.aaabbb.com/appName,
+可通过tomcat配置，缺省系统名称也可访问。
+在&lt;Host&gt;节点内添加如下内容：
+--&gt;
+&lt;Context docBase=&quot;hcode&quot; path=&quot;&quot; /&gt;
+&lt;!--其中，docBase即为系统名称，此时通过http://www.ycyoes.com
+即可进行系统的访问。--&gt;
+
+&lt;!--4. 系统访问时端口号缺省--&gt;
+&lt;!--在访问系统时一般需要在ip地址后带上端口号，如http://ip:port/appName
+,但是80端口可缺省，配置tomcat端口为80则不需要在url中输入端口。配置如下：
+--&gt;
+&lt;Connector port=&quot;80&quot; protocol=&quot;HTTP/1.1&quot;
+               connectionTimeout=&quot;20000&quot;
+               redirectPort=&quot;443&quot; /&gt;
+&lt;!--此时可通过http://ip/appName 进行访问。--&gt;
+
+&lt;!--5. https访问配置--&gt;
+&lt;!--在server.xml中打开如下配置：--&gt;
+
+&lt;Connector port=&quot;443&quot; protocol=&quot;org.apache.coyote.http11.Http11Protocol&quot;
+               maxThreads=&quot;150&quot; SSLEnabled=&quot;true&quot; scheme=&quot;https&quot; secure=&quot;true&quot;
+               clientAuth=&quot;false&quot;
+                sslProtocol=&quot;TLS&quot;
+                keystoreFile=&quot;/home/doc/keys/213972284410468.pfx&quot;
+                keystoreType=&quot;PKCS12&quot;
+                keystorePass=&quot;213972284410468&quot;         /&gt;
+
+&lt;!--添加keystoreFile，keystoreType，keystorePass即可进行https访问。--&gt;
+
+&lt;!--6. 自动跳转到https连接--&gt;
+&lt;!--如果希望输入http链接时自动跳转到https，需要在web.xml中添加如下内容：--&gt;
+&lt;login-config&gt;
+                &lt;!-- Authorization setting for SSL --&gt;
+                &lt;auth-method&gt;CLIENT-CERT&lt;/auth-method&gt;
+                        &lt;realm-name&gt;Client Cert Users-only Area&lt;/realm-name&gt;
+        &lt;/login-config&gt;
+        &lt;security-constraint&gt;
+                &lt;!-- Authorization setting for SSL --&gt;
+                &lt;web-resource-collection &gt;
+                        &lt;web-resource-name &gt;SSL&lt;/web-resource-name&gt;
+                        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+                &lt;/web-resource-collection&gt;
+                &lt;user-data-constraint&gt;
+                        &lt;transport-guarantee&gt;CONFIDENTIAL&lt;/transport-guarantee&gt;
+                &lt;/user-data-constraint&gt;
+        &lt;/security-constraint&gt;
+
+&lt;!--以上内容位置在&lt;/web-app&gt;内，添加后输入http访问时会自动跳转到https连接。--&gt;
+
+&lt;!--7. https访问端口号缺省--&gt;
+&lt;!--Tomcat中https默认端口为8443，该为443后可进行端口号缺省访问系统。如下：--&gt;
+
+&lt;Connector port=&quot;443&quot; protocol=&quot;org.apache.coyote.http11.Http11Protocol&quot;
+               maxThreads=&quot;150&quot; SSLEnabled=&quot;true&quot; scheme=&quot;https&quot; secure=&quot;true&quot;
+               clientAuth=&quot;false&quot;
+                sslProtocol=&quot;TLS&quot;
+                keystoreFile=&quot;/home/doc/keys/213972284410468.pfx&quot;
+                keystoreType=&quot;PKCS12&quot;
+                keystorePass=&quot;213972284410468&quot;         /&gt;
+
+</code></pre>
+
+<h3 id="4_1"><a name="user-content-4_1" href="#4_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4. 数据库服务器异地的情况下，需要修改项目数据库配置</h3>
+<p><span id="jump_5"></span></p>
+<h2 id="apache"><a name="user-content-apache" href="#apache" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Apache服务器搭建</h2>
+<h3 id="1-htdocssoftware"><a name="user-content-1-htdocssoftware" href="#1-htdocssoftware" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 上传安装包到  <strong><em>/htdocs/software</em></strong> 目录</h3>
+<blockquote>
+<p>apr-1.5.2.tar.gz<br />
+apr-util-1.5.4.tar.gz  <br />
+autoconf-2.10.tar.gz <br />
+cmake-2.8.11.2.tar.gz  <br />
+freetype-2.4.0.tar.gz  <br />
+gd-2.0.35.tar.gz <br />
+httpd-2.4.12.tar.gz<br />
+jpegsrc.v8c.tar.gz  <br />
+libgd-gd-libgd-9f0a7e7f4f0f.tar.gz<br />
+libmcrypt-2.5.7.tar.gz <br />
+libpng-1.6.17.tar.bz2 <br />
+libxml2-2.7.8.tar.gz <br />
+mysql-5.6.25.tar.gz<br />
+pcre-8.33.zip<br />
+PHP-5.6.9.tar.gz <br />
+zlib-1.2.5.1.tar.gz </p>
+</blockquote>
+<ul>
+<li>版本根据需求下载</li>
+</ul>
+<h3 id="2_1"><a name="user-content-2_1" href="#2_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. 检查安装时使用的编译工具是否存在</h3>
+<pre><code class="bash">gcc -v
+</code></pre>
+
+<h3 id="3-rpm"><a name="user-content-3-rpm" href="#3-rpm" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. 卸载默认的低版本环境及rpm包环境</h3>
+<pre><code class="bash">rpm -qa | grep -i httpd
+service httpd stop
+rpm -e httpd --nodeps
+rpm -qa | grep -i mysql
+rpm -qa | grep -i php
+</code></pre>
+
+<h3 id="4_2"><a name="user-content-4_2" href="#4_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4. 准备工作</h3>
+<blockquote>
+<p>正式开始编译安装步骤，我们按照一定的顺序安装：Apache –&gt;Mysql –&gt;PHP。<br />
+但在安装PHP之前，应该先安装PHP5需要的最新版本库文件,<br />
+例如：libxml2、libmcrypt、GD2库等文件。<br />
+安装GD2库是为了让PHP5支持GIF、PNG、JPEG图片格式，<br />
+所以在安装GD2库之前还要先安装最新的 zlib、libpng、freetype 和 jpegsrc 等库文件。<br />
+而且中间还会穿插安装一些软件。<br />
+正式安装前先做以下操作：</p>
+</blockquote>
+<ul>
+<li>加载 CURL  SSL</li>
+</ul>
+<pre><code class="bash">yum -y install curl-devel
+yum  install  openssl.x86_64 openssl-devel.x86_64 -y
+</code></pre>
+
+<ul>
+<li>安装libtool.i386</li>
+</ul>
+<pre><code class="bash">yum install libtool
+</code></pre>
+
+<ul>
+<li>安装libtool-ltdl-devel.i386</li>
+</ul>
+<pre><code class="bash">yum install libtool-ltdl-devel
+</code></pre>
+
+<h3 id="5-apache"><a name="user-content-5-apache" href="#5-apache" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5. 安装 <strong><em>Apache</em></strong> 依赖软件</h3>
+<ul>
+<li>安装apr </li>
+</ul>
+<pre><code class="bash">cd /htdocs/software
+tar zxf apr-1.5.2.tar.gz
+cd apr-1.5.2
+./configure --prefix=/usr/local/webserver/apr
+mkdir -p /usr/local/webserver/apr
+make &amp;&amp; make install
+</code></pre>
+
+<ul>
+<li>安装apr-util</li>
+</ul>
+<pre><code class="bash">cd /htdocs/software
+tar zxf apr-util-1.5.4
+cd apr-util-1.5.4
+
+./configure --prefix=/usr/local/webserver/apr-util \
+--with-apr=/usr/local/webserver/apr
+
+mkdir -p /usr/local/webserver/apr-util
+
+make &amp;&amp; make install
+
+</code></pre>
+
+<ul>
+<li>安装pcre</li>
+</ul>
+<pre><code class="bash">#安装前需要安装
+yum install make gcc gcc-c++ zlib-devel libaio -y
+
+cd /htdocs/software
+unzip pcre-8.33.zip
+cd pcre-8.33
+./configure --prefix=/usr/local/webserver/pcre
+
+mkdir -p /usr/local/webserver/pcre
+
+make &amp;&amp; make install
+</code></pre>
+
+<ul>
+<li>安装zlib</li>
+</ul>
+<pre><code class="bash">tar zxf zlib-1.2.5.1.tar.gz
+cd zlib-1.2.5
+./configure --prefix=/usr/local/webserver/zlib
+# 如果有报错：需要添加64位支持
+CFLAGS=&quot;-O3 -fPIC&quot; ./configure --prefix=/usr/local/webserver/zlib
+
+mkdir -p /usr/local/webserver/zlib
+
+make &amp;&amp; make install
+</code></pre>
+
+<h3 id="6-apache"><a name="user-content-6-apache" href="#6-apache" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6. 安装 <strong><em>apache</em></strong></h3>
+<pre><code class="bash">tar zxf httpd-2.4.12.tar.gz
+cd httpd-2.4.12
+./configure --prefix=/usr/local/webserver/apache/ \
+ --with-apr=/usr/local/webserver/apr \
+ --with-apr-util=/usr/local/webserver/apr-util \
+ --with-pcre=/usr/local/webserver/pcre/ \
+ --with-zlib=/usr/local/webserver/zlib/ \
+ --disable-userdir \
+ --enable-deflate-shared \
+ --enable-expires=shared \
+ --enable-rewrite=shared \
+ --enable-static-support  \
+ --enable-so \
+ --enable-rewrite
+
+make &amp;&amp; make install
+
+</code></pre>
+
+<h3 id="7-apache"><a name="user-content-7-apache" href="#7-apache" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7. 将 <strong><em>Apache</em></strong> 安装为系统服务</h3>
+<pre><code class="bash">cp /usr/local/apache/bin/apachectl /etc/init.d/httpd
+vim /etc/init.d/httpd
+
+#!/bin/sh
+#chkconfig:35 50 90 
+#description:Apache Web Server
+
+chkconfig --add httpd
+chkconfig --list httpd
+service httpd start
+
+</code></pre>
+
+<h3 id="8-service-iptables-stop80"><a name="user-content-8-service-iptables-stop80" href="#8-service-iptables-stop80" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>8. 关闭防火墙service iptables stop，机房服务器联系机房人员开放80端口</h3>
+<pre><code class="bash">/sbin/iptable -I INPUT -p tcp --dport 80 -j ACCEPT
+#保存
+/etc/rc.d/init.d/iptables save
+#查看端口
+/etc/init.d/iptables status
+</code></pre>
+
+<blockquote>
+<p>在浏览器刷入ip地址，可以打开看到 It works!，Apache已经成功安装。</p>
+</blockquote>
+<h3 id="9-apache"><a name="user-content-9-apache" href="#9-apache" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>9. <strong><em>Apache</em></strong> 配置多项目</h3>
+<pre><code class="bash"># 基本配置
+User www
+Group www
+
+ServerName [IP] 
+ServerName [www.aaabbb.com]
+
+DcumentRoot &quot;/usr/local/webserver/website&quot;
+&lt;Directory &quot;/usr/local/webserver/website&quot;&gt;
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+&lt;/Directory&gt;
+
+# 配置多项目
+# 开启包含
+Include /etc/httpd/extra/httpd-vhosts.conf
+vim /etc/httpd/extra/httpd-vhosts.conf
+
+&lt;VirtualHost 127.0.0.2:80&gt;
+    DocumentRoot /usr/local/webserver/website
+    ServerName 127.0.0.2:80
+&lt;/VirtualHost&gt;
+&lt;Directory &quot;/usr/local/webserver/website&quot;&gt;
+    Options Indexes FollowSymLinks Multiviews
+    AllowOverride All
+    Order Allow,Deny
+    Allow from all
+&lt;/Directory&gt;
+
+# 配置虚拟主机
+&lt;VirtualHost *:80&gt;
+    ServerName www.aaabbb.com
+    ServerAdmin aaabbb@mail.example.com
+    DocumentRoot &quot;/usr/local/webserver/website&quot;
+    ErrorLog&quot;/data/logs/apache2/aaabbb_errors.log&quot;
+    CustomLog&quot;/data/logs/apache2/aaabbb_accesses.log&quot; common
+&lt;/VirtualHost&gt;
+
+# 配置多个端口
+
+Listen 80
+Listen 81
+
+ServerName localhost:80
+ServerName localhost:81
+
+DcumentRoot &quot;/usr/local/webserver/website/aaabbb&quot;
+DucmentRoot &quot;/usr/local/webserver/website/cccddd&quot;
+</code></pre>
+
+<p><span id="jump_6"></span></p>
+<h2 id="php"><a name="user-content-php" href="#php" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>php环境搭建</h2>
+<h3 id="1-mysql-mysql"><a name="user-content-1-mysql-mysql" href="#1-mysql-mysql" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 参照 <strong><em>MySQL</em></strong> 安装方法安装  <strong><em>MySQL</em></strong></h3>
+<h3 id="2-php"><a name="user-content-2-php" href="#2-php" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. 安装 <strong><em>Php</em></strong> 扩展库</h3>
+<ul>
+<li>安装 <strong><em>libxml2</em></strong></li>
+</ul>
+<pre><code class="bash">tar zxf libxml2-2.7.8.tar.gz
+cd libxml2-2.7.8
+./configure --prefix=/usr/local/webserver/libxml2
+mkdir -p /usr/local/webserver/libxml2
+make &amp;&amp; make install
+</code></pre>
+
+<ul>
+<li>安装 <strong><em>libmcrypt</em></strong></li>
+</ul>
+<pre><code class="bash">tar zxf libmcrypt-2.5.7.tar.gz
+cd libmcrypt-2.5.7
+./configure --prefix=/usr/local/webserver/libmcrypt
+mkdir -p /usr/local/webserver/libmcrypt
+make &amp;&amp; make install
+</code></pre>
+
+<ul>
+<li>安装 <strong><em>libpng</em></strong></li>
+</ul>
+<pre><code class="bash">tar zxf libpng-1.6.17.tar.gz
+cd libpng-1.6.17
+./configure --prefix=/usr/local/webserver/libpng
+mkdir -p /usr/local/webserver/libpng
+make &amp;&amp; make install
+</code></pre>
+
+<ul>
+<li>安装 <strong><em>jpeg8</em></strong></li>
+</ul>
+<pre><code class="bash">tar zxf jpegsrc.v8c.tar.gz
+cd jpeg-8
+./configure --prefix=/usr/local/webserver/jpeg8 --enable-shared --enable-static
+mkdir -p /usr/local/webserver/jpeg8
+make &amp;&amp; make install
+</code></pre>
+
+<ul>
+<li>安装 <strong><em>freetype</em></strong></li>
+</ul>
+<pre><code class="bash">tar zxf freetype-2.4.0.tar.gz
+cd freetype-2.4.0/builds/unix
+mkdir -p /usr/local/webserver/freetype
+./configure --prefix=/usr/local/webserver/freetype --enable-shared
+cd /usr/local/webserver/freetype-2.4.0
+make &amp;&amp; make install
+</code></pre>
+
+<ul>
+<li>安装 <strong><em>autoconf</em></strong></li>
+</ul>
+<pre><code class="bash">tar zxf autoconf-2.10.tar.gz
+cd autoconf-2.10
+./configure
+make &amp;&amp; make install
+</code></pre>
+
+<ul>
+<li>安装 <strong><em>GD</em></strong> 库文件</li>
+</ul>
+<pre><code class="bash">tar zxf libgd-gd-libgd-9f0a7e7f4f0f.tar.gz
+cd libgd-gd-libgd-9f0a7e7f4f0f
+cmake .
+make &amp;&amp; make install
+</code></pre>
+
+<h3 id="3-php"><a name="user-content-3-php" href="#3-php" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. 安装 <strong><em>Php</em></strong></h3>
+<pre><code class="bash">tar zxf php-5.6.9.tar.gz
+cd php-5.6.9
+mkdir -p /usr/local/webserver/php
+./configure --prefix=/usr/local/webserver/php \
+--with-apxs2=/usr/local/webserver/apache/bin/apxs \
+--with-msyql \
+--with-mysqli=/usr/local/webserver/mysql/bin/mysql_config \
+--with-libxml-dir=/usr/local/webserver/libxml2/ \
+--with-jpeg-dir=/usr/local/webserver/jpeg8/ \
+--with-png-dir=/usr/local/webserver/libpng/ \
+--with-freetype-dir=/usr/local/webserver/freetype/ \
+--with-gd -with-zlib-dir=/usr/local/webserver/zlib/ \
+--with-mcrypt=/usr/local/webserver/libmcrypt/ \
+--enable-soap --enable-mbstring-all --enable-sockets
+
+make &amp;&amp; make install
+
+cp php.ini-production /usr/local/webserver/php/lib/php.ini
+vim /usr/lcoal/apache/conf/httpd.conf
+vim /etc/httpd/conf/httpd.conf
+DirectoryIndex index.html index.htm index.php
+AddType application/x-httpd-php .php .phtml
+service httpd restart
+</code></pre>
+
+<h3 id="4-php"><a name="user-content-4-php" href="#4-php" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4. 测试 <strong><em>Php</em></strong></h3>
+<pre><code class="bash">vim /usr/lcoal/webserver/website/test.php
+
+&lt;?php
+phpinfo();
+?&gt;
+
+# 在浏览器输入：[IP]:80 即可看到有关php的信息。
+</code></pre>
+
+<p><span id="jump_7"></span></p>
+<h2 id="nginx"><a name="user-content-nginx" href="#nginx" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>nginx环境搭建</h2>
+<h3 id="1-nginx"><a name="user-content-1-nginx" href="#1-nginx" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. <strong><em>nginx</em></strong> 安装及配置</h3>
+<pre><code class="bash">chmod +w /data/logs
+chown -R www:www /data/logs
+
+cd /htdocs/software
+tar zxf ngx_cache_purge-2.3.tar.gz
+
+tar zxf LuaJIT-2.0.2.tar.gz
+cd LuaJIT-2.0.2
+make &amp;&amp; make install PREFIX=/usr/local/webserver/luajit
+
+export LUAJIT_LIB=/usr/local/webserver/luajit/lib
+
+ln -sv /usr/local/webserver/luajit/lib/libluajit-5.1.so.2 /lib64/libluajit-5.1.so.2
+
+cd /usr/local/webserver
+
+git clone https://github.com/simpl/ngx_devel_kit.git
+git clone https://github.com/agentzh/echo-nginx-module.git
+git clone https://github.com/chaoslawful/lua-nginx-module.git
+
+tar zxf nginx-1.8.1.tar.gz
+cd nginx-1.8.1
+
+./configure --user=www --group=www \
+--prefix=/usr/local/webserver/nginx1.8.1 \
+--with-http_stub_status_module \
+--with-http_ssl_module \
+--with-http_flv_module \
+--with-http_gzip_static_module \
+--with-http_sub_module \
+--add-module=/htdocs/software/ngx_cache_purge-2.3 \
+--add-module=/htdocs/software/fastdfs-nginx-module/src/ \
+--with-http_image_filter_module \
+--with-pcre \
+--with-http_gzip_static_module \
+--with-http_ssl_module \
+--with-openssl=/htdocs/software/openssl-1.0.2g \
+--with-ld-opt=&quot;-Wl,-rpath,$LUAJIT_LIB&quot; \
+--add-module=/usr/local/webserver/ngx_devel_kit \
+--add-module=/usr/local/webserver/echo-nginx-module \
+--add-module=/usr/local/webserver/lua-nginx-module
+
+make &amp;&amp; make install
+
+cd /usr/local/webserver/nginx1.8.1
+
+#将nginx.conf和--fcgi.conf--拷贝至conf文件夹内，并修改nginx.conf
+
+/usr/local/webserver/nginx1.8.1/sbin/nginx –t
+/usr/local/webserver/nginx1.8.1/sbin/nginx
+/usr/local/webserver/nginx1.8.1/sbin/nginx –s reload
+
+</code></pre>
+
+<p><span id="jump_8"></span></p>
+<h2 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>负载均衡配置</h2>
+<h3 id="1-memcached"><a name="user-content-1-memcached" href="#1-memcached" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 安装 <strong><em>memcached</em></strong></h3>
+<pre><code class="bash">cd /htdocs/software
+tar zxvf memcached-1.4.25.tar.gz
+cd memcached-1.4.25
+./configure --prefix=/usr/local/webserver/memcached \
+--with-livevent=/usr/local/webserver/libevent/
+make &amp;&amp; make install
+</code></pre>
+
+<h3 id="2-memecached"><a name="user-content-2-memecached" href="#2-memecached" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. 启动 <strong><em>memecached</em></strong></h3>
+<pre><code class="bash">/usr/local/webserver/memcached/bin/memcached -d -m 256 -u root -l 192.168.6.44 -p 11211 -c 1024 -p /tmp/memcached.pid
+
+/usr/local/webserver/memcached/bin/memcached -d -m 1024 -u root -p 11211 -c 1024 -p /tmp/memcached.pid
+</code></pre>
+
+<h3 id="3-fastdfs"><a name="user-content-3-fastdfs" href="#3-fastdfs" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. 安装 <strong><em>fastdfs</em></strong></h3>
+<pre><code class="bash">cd /htdocs/software
+tar zxf libfastcommon-1.0.7.tar.gz
+cd libfastcommon-1.0.7
+sudo ./make.sh
+sudo ./make.sh install
+# 创建软链接
+ln -sv /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.so
+ln -sv /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so
+ln -sv /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so
+ln -sv /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so
+ln -sv /usr/include/fastcommon /usr/local/include/fastcommon
+
+tar zxf fastdfs-nginx-module_v1.16.tar.gz
+tar zxf fastdfs-5.05.tar.gz
+mv fastdfs-5.05 /usr/local/webserver/fastdfs-5.05
+cd /usr/local/webserver/fastdfs-5.05
+sudo ./make.sh
+sudo ./make.sh install
+
+mv /etc/init.d/tracker.conf.sample /etc/init.d/tracker.conf
+mv /etc/init.d/storage.conf.sample /etc/init.d/storage.conf
+mv /etc/init.d/client.conf.sample /etc/init.d/client.conf
+
+mv /etc/fdfs/tracker.conf.sample /etc/fdfs/tracker.conf
+mv /etc/fdfs/storage.conf.sample /etc/fdfs/storage.conf
+mv /etc/fdfs/client.conf.sample /etc/fdfs/client.conf
+
+cp /htdocs/software/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs/
+cp /usr/local/webserver/fastdfs-5.05/conf/mime.types /etc/fdfs/
+cp /usr/local/webserver/fastdfs-5.05/conf/http.conf /etc/fdfs/
+
+ln -sv /usr/include/fastdfs /usr/local/include/fastdfs 
+
+cp /usr/local/webserver/fastdfs-5.05/restart.sh /usr/local/bin/restart.sh
+cp /usr/local/webserver/fastdfs-5.05/stop.sh /usr/local/bin/stop.sh
+cp /etc/init.d/fdfs_trackerd /usr/local/bin/fdfs_trackerd
+cp /etc/init.d/fdfs_storaged /usr/local/bin/fdfs_storaged 
+
+mkdir -p /data/fastdfs
+
+/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart
+/usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart
+/usr/bin/fdfs_monitor /etc/fdfs/storage.conf
+
+修改相应的fastdfs配置
+ln -s fastdfs-路径/data fastdfs-路径/data/M00 
+
+</code></pre></article></body></html>
